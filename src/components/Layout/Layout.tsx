@@ -7,9 +7,11 @@ import Sidebar from "./Sidebar/Sidebar";
 const Layout = (): JSX.Element => {
   return (
     <div className={styles.wrapper}>
-      <Header />
-      <Sidebar />
-      <Outlet />
+      <Header className={styles.header} />
+      <Sidebar className={styles.sidebar} />
+      <div className={styles.body}>
+        <Outlet />
+      </div>
     </div>
   );
 };
