@@ -2,19 +2,20 @@ import { Icon } from "../Icon/Icon";
 import { LiProps } from "./Li.props";
 
 import styles from "./Li.module.css";
-import { Htag } from "..";
+import { Htag, P } from "..";
 
 export const Li = ({
   children,
   icon,
   color = "gray",
+  size = "m",
+  className,
+  ...props
 }: LiProps): JSX.Element => {
   return (
-    <li className={`${styles.li} ${styles[color]}`}>
+    <li className={`${styles.li} ${styles[color]} ${className}`} {...props}>
       <Icon icon={icon} size={20} />
-      <Htag tag="h2" color={color}>
-        {children}
-      </Htag>
+      {size === "s" ? <P>{children}</P> : <Htag tag="h2">{children}</Htag>}
     </li>
   );
 };
