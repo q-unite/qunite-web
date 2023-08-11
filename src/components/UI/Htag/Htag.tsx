@@ -1,7 +1,11 @@
 import { HtagProps } from "./Htag.props";
 import styles from "./Htag.module.css";
 
-const HTag = ({ children, tag, color = "black" }: HtagProps): JSX.Element => {
+export const Htag = ({
+  children,
+  tag,
+  color = "black",
+}: HtagProps): JSX.Element => {
   switch (tag) {
     case "h1":
       return <h1 className={`${styles.h1} ${styles[color]}`}>{children}</h1>;
@@ -11,5 +15,3 @@ const HTag = ({ children, tag, color = "black" }: HtagProps): JSX.Element => {
       return <></>;
   }
 };
-
-export default HTag;

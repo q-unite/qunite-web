@@ -1,5 +1,4 @@
-import { Button } from "../components/UI";
-import HTag from "../components/UI/Htag/HTag";
+import { Button, Htag, Li } from "../components/UI";
 
 const HomePage = (): JSX.Element => {
   return (
@@ -8,13 +7,17 @@ const HomePage = (): JSX.Element => {
       <Button appearance="danger" icon="plus">
         Create queue
       </Button>
-      <HTag tag="h1">Some black h1</HTag>
-      <HTag tag="h2" color="gray">
+      <Htag tag="h1">Some black h1</Htag>
+      <Htag tag="h2" color="gray">
         Some gray h2
-      </HTag>
-      <HTag tag="h2" color="primary">
+      </Htag>
+      <Htag tag="h2" color="primary">
         Some primary h2
-      </HTag>
+      </Htag>
+      <Li icon="queues">Queues</Li>
+      <Li icon="queues" color="primary">
+        Queues
+      </Li>
     </>
   );
 };
