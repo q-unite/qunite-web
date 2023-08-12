@@ -3,3 +3,13 @@
   flex-direction: column;
   gap: 25px;
 }
+
+.hideButtonContainer {
+  display: flex;
+  margin-inline: 50px;
+}
+
+.hideButton {
+  display: flex;
+  flex: 1;
+}
