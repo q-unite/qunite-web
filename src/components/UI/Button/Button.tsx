@@ -14,24 +14,10 @@ export const Button = ({
 }: ButtonProps): JSX.Element => {
   return (
     <button
-      className={cn(styles.button, className, {
-        [styles.danger]: appearance === "danger",
-        [styles.success]: appearance === "success",
-        [styles.red]: appearance === "red",
-      })}
+      className={cn(styles.button, className, styles[appearance])}
       {...props}
     >
-      {children && (
-        <P
-          className={cn({
-            [styles.danger]: appearance === "danger",
-            [styles.success]: appearance === "success",
-            [styles.red]: appearance === "red",
-          })}
-        >
-          {children}
-        </P>
-      )}
+      {children && <P className={styles[appearance]}>{children}</P>}
       {icon != "none" && <Icon icon={icon} />}
     </button>
   );
