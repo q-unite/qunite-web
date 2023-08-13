@@ -1,0 +1,31 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 76px;
+  left: 0;
+  background: var(--white);
+  width: 100vw;
+  height: calc(100vh - 76px);
+  padding: 32px;
+}
+
+.navbarItem {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+.active,
+.active * {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border-radius: 15px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

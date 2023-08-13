@@ -1,7 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 import cn from "classnames";
 
-import styles from "./Home.module.css";
+import styles from "./Header.module.css";
 import { Droppdown } from "./Droppdown/Droppdown";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 

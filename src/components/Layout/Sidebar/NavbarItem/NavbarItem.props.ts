@@ -5,4 +5,5 @@ export interface NavbarItemProps {
   name: string;
   href: To;
   isHidden: boolean;
+  styles: CSSModuleClasses;
 }
