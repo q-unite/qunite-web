@@ -1,0 +1,16 @@
+.input {
+  display: flex;
+  padding: 20px;
+  border: 1px solid var(--gray);
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 15px;
+}
+
+.input::placeholder {
+  color: var(--gray);
+}
+
+.input:focus {
+  outline: 1px solid var(--gray-dark);
+}
