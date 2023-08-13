@@ -1,7 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoutes from "./PrivateRoutes";
 import Layout from "../components/Layout/Layout";
-import HomePage from "../pages/HomePage";
+import QueuesPage from "../pages/QueuesPage";
+import DashboardPage from "../pages/DashboardPage";
+import SettingsPage from "../pages/SettingsPage";
+import SignupPage from "../pages/auth/Signup";
+import LoginPage from "../pages/auth/LoginPage";
+import QueueDetailsPage from "../pages/QueueDetails";
 
 const router = createBrowserRouter([
   {
@@ -10,9 +15,25 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Layout />,
-        children: [{ path: "/", element: <HomePage /> }],
+        children: [
+          {
+            path: "/",
+            element: <QueuesPage />,
+          },
+          { path: "/queues/:id", element: <QueueDetailsPage /> },
+          { path: "/dashboard", element: <DashboardPage /> },
+          { path: "/settings", element: <SettingsPage /> },
+        ],
       },
     ],
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
   },
 ]);
 
