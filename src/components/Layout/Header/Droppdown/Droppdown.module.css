@@ -1,6 +1,5 @@
 .droppdown {
   position: relative;
-  cursor: pointer;
 }
 
 .content {
@@ -13,7 +12,7 @@
   gap: 15px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
   z-index: 10;
-  transform: translate(-30px);
+  transform: translate(-35%);
   transition: 0.2ms;
 }
 
@@ -31,10 +30,6 @@ ul.content::before {
   rotate: -90deg;
 }
 
-.droppdown li {
-  list-style: none;
-}
-
 .droppdown li p {
   text-wrap: nowrap;
 }
@@ -43,6 +38,7 @@ ul.content::before {
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .visible {
