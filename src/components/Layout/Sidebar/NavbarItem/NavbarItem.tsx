@@ -7,6 +7,7 @@ export const NavbarItem = ({
   icon,
   name,
   href,
+  isHidden,
 }: NavbarItemProps): JSX.Element => {
   return (
     <NavLink
@@ -16,8 +17,9 @@ export const NavbarItem = ({
           ? `${styles.active} ${styles.navbarItem}`
           : `${styles.navbarItem}`
       }
+      style={isHidden ? { justifyContent: "center", paddingLeft: 0 } : {}}
     >
-      <Li icon={icon}>{name}</Li>
+      <Li icon={icon}>{!isHidden && name}</Li>
     </NavLink>
   );
 };
