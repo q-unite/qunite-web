@@ -1,11 +1,8 @@
-import { Htag } from "../../components/UI";
+import { withAuthLayout } from "../../components/AuthLayout/AuthLayout";
+import LoginForm from "../../components/Forms/LoginForm/LoginForm";
 
 const LoginPage = (): JSX.Element => {
-  return (
-    <div>
-      <Htag tag="h1">LoginPage</Htag>
-    </div>
-  );
+  return <LoginForm />;
 };
 
-export default LoginPage;
+export default withAuthLayout(LoginPage);
