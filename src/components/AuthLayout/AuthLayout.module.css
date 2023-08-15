@@ -1,6 +1,7 @@
 .wrapper {
   display: grid;
-  grid-template-columns: auto minmax(320px, 1fr);
+  grid-template-columns: minmax(330px, 460px) minmax(694px, 1fr);
+  grid-template-rows: auto;
 
   min-height: 100vh;
   grid-template-areas: "sidebar body";
@@ -8,15 +9,20 @@
 
 .body {
   grid-area: body;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
 }
 
 .sidebar {
   grid-area: sidebar;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   .wrapper {
     grid-template-areas: "sidebar" "body";
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
   }
 }

@@ -19,7 +19,7 @@
 }
 
 .sidebar {
-  background: #fff;
+  background: var(--white);
   grid-area: sidebar;
   padding: 50px 0;
   display: flex;
