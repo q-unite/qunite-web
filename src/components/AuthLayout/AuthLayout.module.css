@@ -10,9 +10,15 @@
 .body {
   grid-area: body;
   display: flex;
+  flex-direction: column;
+  gap: 25px;
   align-items: center;
   justify-content: center;
   background: var(--white);
+}
+
+.body a {
+  color: var(--primary);
 }
 
 .sidebar {
