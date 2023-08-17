@@ -1,17 +1,17 @@
+import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Navigate, useNavigate } from "react-router-dom";
 
-import APIClient from "../../../services/api-client";
-import { Button, Input, P } from "../../UI";
+import { Button, P } from "../../UI";
 import styles from "./SignupForm.module.css";
 import { schema, FormData } from "./schema";
 import authStore from "../../../stores/auth-store";
-import InputBox from "../InputBox/InputBox";
-
-const apiClient = new APIClient<void>("/auth/sign-up");
+import InputBox from "../InputBox";
+import { onSubmit } from "../onSubmit";
 
 const SignupForm = (): JSX.Element => {
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -22,21 +22,22 @@ const SignupForm = (): JSX.Element => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = async (data: FieldValues): Promise<void> => {
-    await apiClient
-      .auth({ ...data })
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((err) => console.log(err));
-  };
-
   const isAuthenticated = authStore.getState().token;
 
   return isAuthenticated !== null ? (
     <Navigate to="/" />
   ) : (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit((data: FieldValues) =>
+        onSubmit({
+          data,
+          navigate,
+          endpoint: "/auth/sign-up",
+          setError,
+        })
+      )}
+    >
       <InputBox
         placeholder="Type your email"
         {...register("email")}
@@ -58,6 +59,7 @@ const SignupForm = (): JSX.Element => {
         type="password"
         error={errors.password?.message}
       />
+      {error && <P color="primary">{error}</P>}
       <Button type="submit" appearance="success">
         Create an account
       </Button>
