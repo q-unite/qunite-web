@@ -1,5 +1,6 @@
 import { Button } from "../../../../UI";
 import { Ul } from "../../../Sidebar/Ul/Ul";
+import { handleLogout } from "../../handleLogout";
 import styles from "./Nav.module.css";
 import { NavProps } from "./Nav.props";
 
@@ -10,7 +11,9 @@ const Nav = ({ isHidden }: NavProps): JSX.Element => {
 
       <footer className={styles.footer}>
         <Button appearance="success">Create queue</Button>
-        <Button appearance="danger">Log out</Button>
+        <Button appearance="danger" onClick={() => handleLogout()}>
+          Log out
+        </Button>
       </footer>
     </nav>
   );
