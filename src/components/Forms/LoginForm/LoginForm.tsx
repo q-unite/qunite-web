@@ -1,18 +1,18 @@
+import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button } from "../../UI";
+import { Button, P } from "../../UI";
 import styles from "./LoginForm.module.css";
-import APIClient from "../../../services/api-client";
 import { schema, FormData } from "./schema";
-import { AuthResponse } from "../../../interfaces/AuthResponse";
 import authStore from "../../../stores/auth-store";
 import { Navigate } from "react-router-dom";
-import InputBox from "../InputBox/InputBox";
-
-const apiClient = new APIClient<AuthResponse>("/auth/sign-in");
+import InputBox from "../InputBox";
+import { onSubmit } from "../onSubmit";
 
 const LoginForm = (): JSX.Element => {
+  const [error, setError] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -21,22 +21,17 @@ const LoginForm = (): JSX.Element => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = async (data: FieldValues): Promise<void> => {
-    await apiClient
-      .auth({ ...data })
-      .then((data) => {
-        authStore.getState().setToken(data.token);
-        console.log(authStore.getState().token);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const isAuthenticated = authStore.getState().token;
 
   return isAuthenticated !== null ? (
     <Navigate to="/" />
   ) : (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit((data: FieldValues) =>
+        onSubmit({ data, endpoint: "/auth/sign-in", setError })
+      )}
+    >
       <InputBox
         id="login"
         placeholder="Type your login"
@@ -51,6 +46,7 @@ const LoginForm = (): JSX.Element => {
         type="password"
         error={errors.password?.message}
       />
+      {error && <P color="primary">{error}</P>}
       <Button type="submit" appearance="success">
         Login
       </Button>

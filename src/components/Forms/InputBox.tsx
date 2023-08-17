@@ -1,6 +1,6 @@
 import React from "react";
-import { Input, P } from "../../UI";
-import { InputProps } from "../../UI/Input/Input.props";
+import { Input, P } from "../UI";
+import { InputProps } from "../UI/Input/Input.props";
 
 interface Props extends InputProps {
   error: string | undefined;

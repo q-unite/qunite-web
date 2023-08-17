@@ -8,7 +8,7 @@ const SignupPage = (): JSX.Element => {
     <>
       <SignupForm />
       <P color="black">
-        Doesn't have an accont? <Link to="/login">Log in</Link>
+        Doesn't have an account? <Link to="/login">Log in</Link>
       </P>
     </>
   );

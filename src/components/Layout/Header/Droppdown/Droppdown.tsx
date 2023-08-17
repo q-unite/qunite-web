@@ -4,11 +4,12 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import { P } from "../../../UI";
 import styles from "./Droppdown.module.css";
 import { Content } from "./Content";
-import { useClickOutOfBlock } from "../../../../hooks/useClickOutOfBlock";
+import { useGetMe, useClickOutOfBlock } from "../../../../hooks";
 
 export const Droppdown = (): JSX.Element => {
   const [visible, setVisible] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const user = useGetMe();
 
   useClickOutOfBlock(dropdownRef, setVisible);
 
@@ -16,7 +17,7 @@ export const Droppdown = (): JSX.Element => {
     <div ref={dropdownRef} className={styles.droppdown}>
       <div className={styles.user} onClick={() => setVisible(!visible)}>
         <P size="m" color="black">
-          Denlich
+          {user.data?.username}
         </P>
         <IoChevronDownOutline size={16} color="#FF0065" />
       </div>
