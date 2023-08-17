@@ -1,11 +1,17 @@
-import { Htag } from "../../components/UI";
+import { Link } from "react-router-dom";
+import { withAuthLayout } from "../../components/AuthLayout/AuthLayout";
+import LoginForm from "../../components/Forms/LoginForm/LoginForm";
+import { P } from "../../components/UI";
 
 const LoginPage = (): JSX.Element => {
   return (
-    <div>
-      <Htag tag="h1">LoginPage</Htag>
-    </div>
+    <>
+      <LoginForm />
+      <P color="black">
+        Doesn't have an accont? <Link to="/signup">Sign up</Link>
+      </P>
+    </>
   );
 };
 
-export default LoginPage;
+export default withAuthLayout(LoginPage);

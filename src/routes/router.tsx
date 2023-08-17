@@ -4,7 +4,7 @@ import Layout from "../components/Layout/Layout";
 import QueuesPage from "../pages/QueuesPage";
 import DashboardPage from "../pages/DashboardPage";
 import SettingsPage from "../pages/SettingsPage";
-import SignupPage from "../pages/auth/Signup";
+import SignupPage from "../pages/auth/SignupPage";
 import LoginPage from "../pages/auth/LoginPage";
 import QueueDetailsPage from "../pages/QueueDetails";
 
