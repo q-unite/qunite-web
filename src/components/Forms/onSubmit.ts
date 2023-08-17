@@ -5,6 +5,7 @@ import { AxiosError } from "axios";
 
 import APIClient from "../../services/api-client";
 import authStore from "../../stores/auth-store";
+import { AuthResponse } from "../../interfaces/AuthResponse";
 
 interface ErrorResponse {
   message: string;
@@ -24,15 +25,15 @@ export const onSubmit = async ({
   endpoint,
   setError,
 }: Props): Promise<void> => {
-  const apiClient = new APIClient(endpoint);
+  const apiClient = new APIClient<AuthResponse>(endpoint);
 
   await apiClient
     .auth({ ...data })
-    .then(() => {
+    .then((res) => {
       if (navigate) {
         navigate("/login");
       } else {
-        authStore.getState().setToken(data.token);
+        authStore.getState().setToken(res.token);
       }
     })
     .catch((error: AxiosError) => {
