@@ -1,6 +1,9 @@
-import { Button, Htag, Li } from "../components/UI";
+import { useState } from "react";
+import { Button, Htag, Input, Li, Modal } from "../components/UI";
 
 const HomePage = (): JSX.Element => {
+  const [isShown, setIsShown] = useState(false);
+
   return (
     <>
       <Button appearance="danger" icon="menu" />
@@ -18,6 +21,20 @@ const HomePage = (): JSX.Element => {
       <Li icon="queues" color="primary">
         Queues
       </Li>
+
+      <Button appearance="success" onClick={() => setIsShown(true)}>
+        Open modal
+      </Button>
+
+      <Modal
+        isShown={isShown}
+        title="Create queue"
+        successButtonText="Create"
+        dangerButtonText="Cancel"
+        setIsShown={setIsShown}
+      >
+        <Input placeholder="Type name of the queue" />
+      </Modal>
     </>
   );
 };
