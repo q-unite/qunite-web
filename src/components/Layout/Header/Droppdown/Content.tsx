@@ -1,7 +1,8 @@
 import cn from "classnames";
 
 import styles from "./Droppdown.module.css";
-import { P } from "../../../UI";
+import { Li } from "../../../UI";
+import { handleLogout } from "../handleLogout";
 
 export const Content = ({ visible }: { visible: boolean }): JSX.Element => {
   return (
@@ -10,12 +11,12 @@ export const Content = ({ visible }: { visible: boolean }): JSX.Element => {
         [styles.visible]: !visible,
       })}
     >
-      <li>
-        <P>Create queue</P>
-      </li>
-      <li>
-        <P color="primary">Log out</P>
-      </li>
+      <Li icon="plus" size="s">
+        Create queue
+      </Li>
+      <Li icon="logout" color="primary" size="s" onClick={() => handleLogout()}>
+        Log out
+      </Li>
     </ul>
   );
 };

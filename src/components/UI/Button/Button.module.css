@@ -6,6 +6,7 @@
   justify-content: center;
   gap: 20px;
   border: none;
+  cursor: pointer;
 }
 
 .danger {
