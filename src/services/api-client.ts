@@ -28,6 +28,10 @@ class APIClient<T> {
   get = () => {
     return axiosInstance.get<T>(this.endpoint).then((res) => res.data);
   };
+
+  createQueue = (name: { name: string }) => {
+    return axiosInstance.post<T>(this.endpoint, name).then((res) => res.data);
+  };
 }
 
 export default APIClient;

@@ -35,6 +35,7 @@
 
 .modalBody {
   display: flex;
+  flex-direction: column;
 }
 
 .modalBody > * {

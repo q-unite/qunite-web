@@ -5,6 +5,15 @@
   cursor: pointer;
 }
 
+.li,
+.li > * {
+  transition: 0.2s all;
+}
+
+.li:hover > * {
+  color: var(--primary);
+}
+
 .gray > * {
   color: var(--gray);
 }

@@ -6,7 +6,7 @@
 }
 
 .active {
-  border-color: var(--primary);
+  border-left-color: var(--primary);
 }
 
 .active * {

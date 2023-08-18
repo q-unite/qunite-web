@@ -40,22 +40,10 @@ export const Modal = ({
         </header>
         <div className={styles.modalBody}>{children}</div>
         <footer className={styles.modalFooter}>
-          <Button
-            appearance="success"
-            onClick={() => {
-              successButtonClick();
-              setIsShown(false);
-            }}
-          >
+          <Button appearance="success" onClick={successButtonClick}>
             {successButtonText}
           </Button>
-          <Button
-            appearance="danger"
-            onClick={() => {
-              dangerButtonClick();
-              setIsShown(false);
-            }}
-          >
+          <Button appearance="danger" onClick={dangerButtonClick}>
             {dangerButtonText}
           </Button>
         </footer>
