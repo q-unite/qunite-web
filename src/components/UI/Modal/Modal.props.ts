@@ -7,4 +7,6 @@ export interface ModalProps {
   successButtonText: string;
   dangerButtonText: string;
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
+  successButtonClick: () => void;
+  dangerButtonClick: () => void;
 }

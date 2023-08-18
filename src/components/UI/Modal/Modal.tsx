@@ -4,16 +4,21 @@ import { IoClose } from "react-icons/io5";
 import styles from "./Modal.module.css";
 import { ModalProps } from "./Modal.props";
 import { Button, Htag } from "..";
+import { useClickOutOfBlock } from "../../../hooks";
 
 export const Modal = ({
   isShown,
   title,
   children,
   successButtonText,
+  successButtonClick,
   dangerButtonText,
+  dangerButtonClick,
   setIsShown,
 }: ModalProps): JSX.Element => {
   const ref = useRef<HTMLDivElement | null>(null);
+
+  useClickOutOfBlock(ref, setIsShown);
 
   return (
     <section
@@ -35,8 +40,24 @@ export const Modal = ({
         </header>
         <div className={styles.modalBody}>{children}</div>
         <footer className={styles.modalFooter}>
-          <Button appearance="success">{successButtonText}</Button>
-          <Button appearance="danger">{dangerButtonText}</Button>
+          <Button
+            appearance="success"
+            onClick={() => {
+              successButtonClick();
+              setIsShown(false);
+            }}
+          >
+            {successButtonText}
+          </Button>
+          <Button
+            appearance="danger"
+            onClick={() => {
+              dangerButtonClick();
+              setIsShown(false);
+            }}
+          >
+            {dangerButtonText}
+          </Button>
         </footer>
       </div>
     </section>
