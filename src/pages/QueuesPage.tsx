@@ -15,6 +15,8 @@ const QueuesPage = (): JSX.Element => {
     <>
       <Htag tag="h1">Queues Page</Htag>
 
+      <Button appearance="red" icon="trash" />
+
       <Button appearance="success" onClick={handleOpenModalClick}>
         Open modal
       </Button>
