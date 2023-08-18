@@ -6,11 +6,8 @@ import {
   IoMenu,
   IoPencil,
   IoSettingsOutline,
-  IoTrashOutline,
 } from "react-icons/io5";
-
-import { BiSolidDashboard } from "react-icons/bi";
-
+import { BiSolidDashboard, BiTrash } from "react-icons/bi";
 import { IconProps } from "./Icon.props";
 
 export const Icon = ({ icon, size = 16 }: IconProps): JSX.Element => {
@@ -22,7 +19,7 @@ export const Icon = ({ icon, size = 16 }: IconProps): JSX.Element => {
     case "plus":
       return <IoAdd size={size} />;
     case "trash":
-      return <IoTrashOutline size={size} />;
+      return <BiTrash size={size} />;
     case "menu":
       return <IoMenu size={size} />;
     case "dashboard":

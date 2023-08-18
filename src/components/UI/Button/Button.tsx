@@ -17,11 +17,7 @@ export const Button = ({
       className={cn(styles.button, className, styles[appearance])}
       {...props}
     >
-      {children && (
-        <P className={styles[appearance]} size="m">
-          {children}
-        </P>
-      )}
+      {children && <P size="m">{children}</P>}
       {icon != "none" && <Icon icon={icon} />}
     </button>
   );
