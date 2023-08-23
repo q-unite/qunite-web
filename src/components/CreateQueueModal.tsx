@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
 import { AxiosError } from "axios";
-import { Input, Modal, P } from "../../../UI";
-import APIClient from "../../../../services/api-client";
-import { Queue } from "../../../../interfaces/Queue";
+import { Input, Modal, P } from "./UI";
+import APIClient from "../services/api-client";
+import { Queue } from "../interfaces/Queue";
 
 interface ErrorResponse {
   name: string;
@@ -15,7 +15,10 @@ interface Props {
 
 const apiClient = new APIClient<Queue>("/queues");
 
-export const DroppdownModal = ({ isShown, setIsShown }: Props): JSX.Element => {
+export const CreateQueueModal = ({
+  isShown,
+  setIsShown,
+}: Props): JSX.Element => {
   const ref = useRef<HTMLInputElement | null>(null);
   const [text, setText] = useState("");
   const [error, setError] = useState<AxiosError<ErrorResponse> | null>(null);
@@ -39,7 +42,9 @@ export const DroppdownModal = ({ isShown, setIsShown }: Props): JSX.Element => {
       successButtonClick={onSubmitHandler}
       dangerButtonText="Cancel"
       dangerButtonClick={() => {
-        console.log("jiasmdasdm");
+        setText("");
+        setError(null);
+        setIsShown(false);
       }}
     >
       <Input

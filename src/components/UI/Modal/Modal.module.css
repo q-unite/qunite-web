@@ -58,3 +58,16 @@
   padding: 0;
   cursor: pointer;
 }
+
+@media (max-width: 765px) {
+  .modalContainer {
+    padding: 32px;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modalContainer {
+    min-width: 75vw;
+  }
+}

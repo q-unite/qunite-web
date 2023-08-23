@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Button } from "../../../UI";
 import styles from "./BurgerMenu.module.css";
 import Nav from "./Nav/Nav";
+import { CreateQueueModal } from "../../../CreateQueueModal";
 
 export const BurgerMenu = (): JSX.Element => {
   const [isHidden, setIsHidden] = useState(true);
+  const [isShown, setIsShown] = useState(false);
 
   return (
     <div className={styles.burgerMenu}>
@@ -15,7 +17,9 @@ export const BurgerMenu = (): JSX.Element => {
         style={!isHidden ? { transform: "rotate(90deg)" } : {}}
       />
 
-      <Nav isHidden={isHidden} />
+      <Nav isHidden={isHidden} setIsShown={setIsShown} />
+
+      <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
     </div>
   );
 };
