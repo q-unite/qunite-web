@@ -6,13 +6,14 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Button, P } from "../../UI";
 import styles from "./SignupForm.module.css";
 import { schema, FormData } from "./schema";
-import authStore from "../../../stores/auth-store";
 import InputBox from "../InputBox";
 import { onSubmit } from "../onSubmit";
+import { useGetMe } from "../../../hooks";
 
 const SignupForm = (): JSX.Element => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { data, refetch } = useGetMe();
 
   const {
     register,
@@ -22,21 +23,21 @@ const SignupForm = (): JSX.Element => {
     resolver: zodResolver(schema),
   });
 
-  const isAuthenticated = authStore.getState().token;
+  const isAuthenticated = data?.username;
 
-  return isAuthenticated !== null ? (
+  return isAuthenticated ? (
     <Navigate to="/" />
   ) : (
     <form
       className={styles.form}
-      onSubmit={handleSubmit((data: FieldValues) =>
+      onSubmit={handleSubmit((data: FieldValues) => {
         onSubmit({
           data,
           navigate,
           endpoint: "/auth/sign-up",
           setError,
-        })
-      )}
+        }).then(() => refetch());
+      })}
     >
       <InputBox
         placeholder="Type your email"

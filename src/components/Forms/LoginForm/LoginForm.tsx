@@ -5,13 +5,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, P } from "../../UI";
 import styles from "./LoginForm.module.css";
 import { schema, FormData } from "./schema";
-import authStore from "../../../stores/auth-store";
 import { Navigate } from "react-router-dom";
 import InputBox from "../InputBox";
 import { onSubmit } from "../onSubmit";
+import { useGetMe } from "../../../hooks";
 
 const LoginForm = (): JSX.Element => {
   const [error, setError] = useState("");
+  const { data, refetch } = useGetMe();
 
   const {
     register,
@@ -21,16 +22,18 @@ const LoginForm = (): JSX.Element => {
     resolver: zodResolver(schema),
   });
 
-  const isAuthenticated = authStore.getState().token;
+  const isAuthenticated = data?.username;
 
-  return isAuthenticated !== null ? (
+  return isAuthenticated ? (
     <Navigate to="/" />
   ) : (
     <form
       className={styles.form}
-      onSubmit={handleSubmit((data: FieldValues) =>
-        onSubmit({ data, endpoint: "/auth/sign-in", setError })
-      )}
+      onSubmit={handleSubmit((data: FieldValues) => {
+        onSubmit({ data, endpoint: "/auth/sign-in", setError }).then(() =>
+          refetch()
+        );
+      })}
     >
       <InputBox
         id="login"

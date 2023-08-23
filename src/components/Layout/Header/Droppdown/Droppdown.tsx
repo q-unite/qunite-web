@@ -5,7 +5,7 @@ import { P } from "../../../UI";
 import styles from "./Droppdown.module.css";
 import { Content } from "./Content";
 import { useGetMe, useClickOutOfBlock } from "../../../../hooks";
-import { DroppdownModal } from "./DroppdownModal";
+import { CreateQueueModal } from "../../../CreateQueueModal";
 
 export const Droppdown = (): JSX.Element => {
   const [visible, setVisible] = useState(false);
@@ -27,7 +27,7 @@ export const Droppdown = (): JSX.Element => {
         <Content visible={visible} setIsShown={setIsShown} />
       </div>
 
-      <DroppdownModal isShown={isShown} setIsShown={setIsShown} />
+      <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
     </>
   );
 };
