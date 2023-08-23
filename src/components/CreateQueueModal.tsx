@@ -3,6 +3,7 @@ import { AxiosError } from "axios";
 import { Input, Modal, P } from "./UI";
 import APIClient from "../services/api-client";
 import { Queue } from "../interfaces/Queue";
+import useQueuesStore from "../stores/queues-store";
 
 interface ErrorResponse {
   name: string;
@@ -22,11 +23,16 @@ export const CreateQueueModal = ({
   const ref = useRef<HTMLInputElement | null>(null);
   const [text, setText] = useState("");
   const [error, setError] = useState<AxiosError<ErrorResponse> | null>(null);
+  const addToQueues = useQueuesStore((q) => q.addToQueues);
 
   const onSubmitHandler = (): void => {
     apiClient
       .createQueue({ name: text })
-      .then(() => setError(null))
+      .then((res) => {
+        setError(null);
+        setIsShown(false);
+        addToQueues(res);
+      })
       .catch((err) => {
         setError(err);
       })
