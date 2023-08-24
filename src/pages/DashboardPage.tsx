@@ -1,10 +1,34 @@
-import { Htag } from "../components/UI";
+import { useEffect } from "react";
+import MyQueues from "../components/MyQueues/MyQueues";
+import { Flex, Htag } from "../components/UI";
+import { useGetMe, useGetMyQueues } from "../hooks";
+import useMyQueuesStore from "../stores/my-queues-store";
 
 const DashboardPage = (): JSX.Element => {
+  const { data } = useGetMe();
+  const { data: myQueues } = useGetMyQueues(data?.id);
+
+  const setMyQueues = useMyQueuesStore((q) => q.setMyQueues);
+  const queues = useMyQueuesStore((q) => q.myQueues);
+
+  useEffect(() => {
+    if (myQueues) {
+      setMyQueues(myQueues);
+    }
+  }, [setMyQueues, myQueues]);
+
+  if (!data) {
+    return (
+      <Htag tag="h1" color="primary">
+        Some error on server
+      </Htag>
+    );
+  }
+
   return (
-    <>
-      <Htag tag="h1">DashboardPage</Htag>
-    </>
+    <Flex>
+      <MyQueues myQueues={queues} />
+    </Flex>
   );
 };
 

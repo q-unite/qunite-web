@@ -1,8 +1,7 @@
 import cn from "classnames";
-import { Icon } from "../Icon/Icon";
 import { LiProps } from "./Li.props";
 import styles from "./Li.module.css";
-import { Htag, P } from "..";
+import { Htag, P, Icon } from "..";
 
 export const Li = ({
   children,

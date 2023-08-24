@@ -1,8 +1,7 @@
 import cn from "classnames";
 
 import { ButtonProps } from "./Button.props";
-import { Icon } from "../Icon/Icon";
-import { P } from "..";
+import { P, Icon } from "..";
 import styles from "./Button.module.css";
 
 export const Button = ({

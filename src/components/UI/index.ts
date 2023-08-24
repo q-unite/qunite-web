@@ -5,3 +5,5 @@ export * from "./Li/Li";
 export * from "./Input/Input";
 export * from "./Modal/Modal";
 export * from "./Grid/Grid";
+export * from "./Flex/Flex";
+export * from "./Icon/Icon";
