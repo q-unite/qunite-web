@@ -1,0 +1,15 @@
+.header {
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.name {
+  flex: 1;
+  overflow: hidden;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}

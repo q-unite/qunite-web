@@ -6,7 +6,7 @@ import DashboardPage from "../pages/DashboardPage";
 import SettingsPage from "../pages/SettingsPage";
 import SignupPage from "../pages/auth/SignupPage";
 import LoginPage from "../pages/auth/LoginPage";
-import QueueDetailsPage from "../pages/QueueDetails";
+import QueueDetailsPage from "../pages/QueueDetailsPage";
 
 const router = createBrowserRouter([
   {
