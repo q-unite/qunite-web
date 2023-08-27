@@ -1,16 +1,15 @@
 import { useParams } from "react-router-dom";
-import { Header } from "../components/QueueDetails";
+import { Header, Main } from "../components/QueueDetails";
 import { Flex, Htag } from "../components/UI";
-import { useGetQueue } from "../hooks";
-import useMyQueuesStore from "../stores/my-queues-store";
+import { useGetCreator, useGetMe, useGetQueue } from "../hooks";
 
 const QueueDetailsPage = (): JSX.Element => {
   const { id } = useParams();
   const { data } = useGetQueue(id!);
+  const { data: me } = useGetMe();
+  const { data: creator } = useGetCreator(parseInt(id!));
 
-  const isMyQueue = !!useMyQueuesStore((q) => q.myQueues).find(
-    (r) => r.id === parseInt(id!)
-  );
+  const isMyQueue = me?.username === creator?.username;
 
   if (!data) {
     return (
@@ -21,8 +20,9 @@ const QueueDetailsPage = (): JSX.Element => {
   }
 
   return (
-    <Flex>
+    <Flex style={{ gap: "20px" }}>
       <Header name={data.name} isMyQueue={isMyQueue} />
+      <Main id={parseInt(id!)} />
     </Flex>
   );
 };
