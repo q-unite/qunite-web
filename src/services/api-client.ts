@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import axios, { AxiosRequestConfig } from "axios";
 import authStore from "../stores/auth-store";
+import { PostProps } from "./interfaces";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -32,8 +33,13 @@ class APIClient<T> {
     return axiosInstance.get<T>(url).then((res) => res.data);
   };
 
-  createQueue = (name: { name: string }) => {
-    return axiosInstance.post<T>(this.endpoint, name).then((res) => res.data);
+  post = ({ data, additional }: PostProps) => {
+    return axiosInstance
+      .post<T>(
+        this.endpoint + (additional ? additional : ""),
+        data ? data.params : null
+      )
+      .then((res) => res.data);
   };
 }
 

@@ -1,27 +1,17 @@
 import styles from "./Main.module.css";
-import { Grid, Htag } from "../../UI";
+import { Grid } from "../../UI";
 import { MembersList, Status } from "../components";
-import { useGetQueueMembers } from "../../../hooks";
+import { Member } from "../../../interfaces/Member";
 
 interface Props {
-  id: number;
+  members: Member[];
 }
 
-export const Main = ({ id }: Props): JSX.Element => {
-  const { data } = useGetQueueMembers(id);
-
-  if (!data) {
-    return (
-      <Htag tag="h1" color="primary">
-        Some error
-      </Htag>
-    );
-  }
-
+export const Main = ({ members }: Props): JSX.Element => {
   return (
     <Grid className={styles.grid}>
       <Status />
-      <MembersList members={data} />
+      <MembersList members={members} />
     </Grid>
   );
 };

@@ -29,7 +29,7 @@ export const CreateQueueModal = ({
 
   const onSubmitHandler = (): void => {
     apiClient
-      .createQueue({ name: text })
+      .post({ data: { params: { name: text } } })
       .then((res) => {
         setError(null);
         setIsShown(false);

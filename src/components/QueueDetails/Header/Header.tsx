@@ -1,12 +1,14 @@
 import styles from "./Header.module.css";
 import { Button, Flex, Htag } from "../../UI";
+import { enrolleMeHandller } from "../handlers";
+import { HeaderProps } from "./Header.props";
 
-interface Props {
-  name: string;
-  isMyQueue: boolean;
-}
-
-export const Header = ({ name, isMyQueue }: Props): JSX.Element => {
+export const Header = ({
+  name,
+  isMyQueue,
+  id,
+  isInQueue,
+}: HeaderProps): JSX.Element => {
   return (
     <Flex direction="row" className={styles.header}>
       <Htag tag="h1" className={styles.name}>
@@ -21,9 +23,15 @@ export const Header = ({ name, isMyQueue }: Props): JSX.Element => {
           <Button appearance="red" icon="trash" />
         </div>
       ) : (
-        <Button appearance="success" icon="plus">
-          Enroll me
-        </Button>
+        !isInQueue && (
+          <Button
+            appearance="success"
+            icon="plus"
+            onClick={() => enrolleMeHandller(id)}
+          >
+            Enroll me
+          </Button>
+        )
       )}
     </Flex>
   );
