@@ -3,7 +3,7 @@ import APIClient from "../services/api-client";
 import { AxiosError } from "axios";
 import { User } from "../interfaces/User";
 
-const apiClient = new APIClient("/queues");
+const apiClient = new APIClient<User>("/queues");
 
 export const useGetCreator = (
   queueId: number

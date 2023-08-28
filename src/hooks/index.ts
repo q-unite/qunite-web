@@ -3,6 +3,7 @@ export * from "./useClickOutOfBlock";
 export * from "./useGetQueues";
 export * from "./useGetMyQueues";
 export * from "./useWindowWidth";
-export * from "./getQueue";
+export * from "./useGetQueue";
 export * from "./useGetCreator";
 export * from "./useGetQueueMembers";
+export * from "./useGetUser";

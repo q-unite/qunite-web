@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 import { Queue } from "../interfaces/Queue";
 import APIClient from "../services/api-client";
 
-const apiClient = new APIClient("/queues");
+const apiClient = new APIClient<Queue>("/queues");
 
 export const useGetQueue = (id: string): UseQueryResult<Queue, AxiosError> =>
   useQuery({
