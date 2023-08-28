@@ -8,8 +8,3 @@
   flex: 1;
   overflow: hidden;
 }
-
-.buttons {
-  display: flex;
-  gap: 20px;
-}

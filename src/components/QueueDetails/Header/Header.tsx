@@ -1,10 +1,9 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
-import { Button, Flex, Htag } from "../../UI";
-import { enrolleMeHandller } from "../handlers";
+import { Flex, Htag } from "../../UI";
 import { HeaderProps } from "./Header.props";
 import { DeleteQueueModal } from "../../DeleteQueueModal";
-import { handleModalOpen } from "../../../handlers/handleModalOpen";
+import { AddminButtons, UserButtons } from "../components";
 
 export const Header = ({
   name,
@@ -22,28 +21,9 @@ export const Header = ({
         </Htag>
 
         {isMyQueue ? (
-          <div className={styles.buttons}>
-            <Button appearance="danger" icon="pencil">
-              Managers
-            </Button>
-            <Button
-              appearance="red"
-              icon="trash"
-              onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
-                handleModalOpen(event, setIsShown)
-              }
-            />
-          </div>
+          <AddminButtons setIsShown={setIsShown} />
         ) : (
-          !isInQueue && (
-            <Button
-              appearance="success"
-              icon="plus"
-              onClick={() => enrolleMeHandller(id)}
-            >
-              Enroll me
-            </Button>
-          )
+          <UserButtons id={id} isInQueue={isInQueue} />
         )}
       </Flex>
 
