@@ -1,10 +1,16 @@
-import { Htag } from "../components/UI";
+import { SettingsForm } from "../components/Forms/SettingsForm/SettingsForm";
 
 const SettingsPage = (): JSX.Element => {
   return (
-    <>
-      <Htag tag="h1">SettingsPage</Htag>
-    </>
+    <section
+      style={{
+        display: "flex",
+        borderRadius: "15px",
+        background: "var(--white)",
+      }}
+    >
+      <SettingsForm />
+    </section>
   );
 };
 

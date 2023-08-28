@@ -35,6 +35,10 @@ class APIClient<T> {
   createQueue = (name: { name: string }) => {
     return axiosInstance.post<T>(this.endpoint, name).then((res) => res.data);
   };
+
+  patch = (config?: AxiosRequestConfig) => {
+    return axiosInstance.patch(this.endpoint, config).then((res) => res.data);
+  };
 }
 
 export default APIClient;
