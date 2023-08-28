@@ -7,6 +7,8 @@ interface MyQueuesStore {
   setMyQueues: (queues: Queue[]) => void;
   // eslint-disable-next-line no-unused-vars
   addToMyQueues: (queue: Queue) => void;
+  // eslint-disable-next-line no-unused-vars
+  removeFromMyQueues: (queueId: number) => void;
 }
 
 const useMyQueuesStore = create<MyQueuesStore>((set) => ({
@@ -14,6 +16,10 @@ const useMyQueuesStore = create<MyQueuesStore>((set) => ({
   setMyQueues: (queues) => set(() => ({ myQueues: queues })),
   addToMyQueues: (queue) =>
     set((store) => ({ myQueues: [...store.myQueues, queue] })),
+  removeFromMyQueues: (queueId) =>
+    set((store) => ({
+      myQueues: store.myQueues.filter((q) => q.id !== queueId),
+    })),
 }));
 
 export default useMyQueuesStore;
