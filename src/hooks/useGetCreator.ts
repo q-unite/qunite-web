@@ -9,6 +9,6 @@ export const useGetCreator = (
   queueId: number
 ): UseQueryResult<User, AxiosError> =>
   useQuery({
-    queryKey: ["creator"],
+    queryKey: ["creator", queueId],
     queryFn: () => apiClient.get(`/${queueId}/creator`),
   });

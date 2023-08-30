@@ -34,7 +34,7 @@ const QueueDetailsPage = (): JSX.Element => {
         id={parseInt(id!)}
         isInQueue={isInQueue}
       />
-      <Main members={members} me={me!} />
+      <Main members={members} me={me!} isMyQueue={isMyQueue} />
     </Flex>
   );
 };

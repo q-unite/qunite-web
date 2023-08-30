@@ -42,7 +42,7 @@ class APIClient<T> {
       .then((res) => res.data);
   };
 
-  delete = (additional: string) => {
+  delete = (additional?: string) => {
     return axiosInstance.delete(this.endpoint + (additional ? additional : ""));
   };
 }
