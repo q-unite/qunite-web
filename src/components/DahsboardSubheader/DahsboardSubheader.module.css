@@ -1,0 +1,19 @@
+.subheader {
+  justify-content: space-between;
+}
+
+.button {
+  background: transparent;
+  border: none;
+  transform: rotate(90deg);
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.active {
+  transform: rotate(-90deg);
+}
+
+.button > * {
+  color: var(--gray);
+}

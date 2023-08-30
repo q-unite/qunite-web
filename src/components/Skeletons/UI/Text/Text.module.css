@@ -1,0 +1,27 @@
+.text {
+  display: flex;
+  background: var(--gray);
+  animation: text-loading 1s ease-in-out infinite;
+}
+
+@keyframes text-loading {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.s {
+  height: 16px;
+}
+
+.m {
+  height: 20px;
+}
+
+.l {
+  height: 36px;
+}

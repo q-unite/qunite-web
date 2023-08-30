@@ -1,0 +1,50 @@
+.button {
+  display: flex;
+  padding: 20px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.button,
+.button > * {
+  transition: 0.2s ease-in-out;
+}
+
+.danger,
+.danger > * {
+  background: var(--primary-bg);
+  color: var(--primary);
+}
+
+.danger:hover,
+.danger:hover > * {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.success,
+.success > * {
+  background: var(--secondary-bg);
+  color: var(--secondary);
+}
+
+.success:hover,
+.success:hover > * {
+  background: var(--secondary);
+  color: var(--white);
+}
+
+.red,
+.red > * {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.red:hover,
+.red:hover > * {
+  background: var(--primary-hover);
+}

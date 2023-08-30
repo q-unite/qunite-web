@@ -1,0 +1,22 @@
+.controller {
+  display: flex;
+  padding: 50px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  border-radius: 15px;
+  background: var(--white);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}

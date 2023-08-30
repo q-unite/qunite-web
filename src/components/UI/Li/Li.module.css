@@ -1,0 +1,23 @@
+.li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.li,
+.li > * {
+  transition: 0.2s all;
+}
+
+.li:hover > * {
+  color: var(--primary);
+}
+
+.gray > * {
+  color: var(--gray);
+}
+
+.primary > * {
+  color: var(--primary);
+}

@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  padding: 25px 50px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+  background: var(--white);
+  position: relative;
+}
+
+.logo {
+  color: var(--primary);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 3.6px;
+}
+
+@media (max-width: 765px) {
+  .header {
+    padding: 10px 25px;
+  }
+}
