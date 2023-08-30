@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 import { Input, Modal, P } from "../UI";
 import APIClient from "../../services/api-client";
@@ -26,6 +27,7 @@ export const CreateQueueModal = ({
   const [error, setError] = useState<AxiosError<ErrorResponse> | null>(null);
   const addToQueues = useQueuesStore((q) => q.addToQueues);
   const addToMyQueues = useMyQueuesStore((q) => q.addToMyQueues);
+  const navigate = useNavigate();
 
   const onSubmitHandler = (): void => {
     apiClient
@@ -35,6 +37,7 @@ export const CreateQueueModal = ({
         setIsShown(false);
         addToQueues(res);
         addToMyQueues(res);
+        navigate(`/queues/${res.id}`);
       })
       .catch((err) => {
         setError(err);
