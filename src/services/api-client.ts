@@ -45,6 +45,10 @@ class APIClient<T> {
   delete = (additional?: string) => {
     return axiosInstance.delete(this.endpoint + (additional ? additional : ""));
   };
+
+  patch = (config?: AxiosRequestConfig) => {
+    return axiosInstance.patch(this.endpoint, config).then((res) => res.data);
+  };
 }
 
 export default APIClient;
