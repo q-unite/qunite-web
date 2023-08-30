@@ -1,4 +1,4 @@
-import { Htag, Modal } from "./UI";
+import { Htag, Modal } from "../UI";
 
 interface Props {
   queueId?: number;

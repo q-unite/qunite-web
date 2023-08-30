@@ -5,7 +5,7 @@ import { P } from "../../../UI";
 import styles from "./Droppdown.module.css";
 import { Content } from "./Content";
 import { useGetMe, useClickOutOfBlock } from "../../../../hooks";
-import { CreateQueueModal } from "../../../CreateQueueModal";
+import { CreateQueueModal } from "../../../Modals/CreateQueueModal";
 
 export const Droppdown = (): JSX.Element => {
   const [visible, setVisible] = useState(false);

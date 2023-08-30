@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
-import { Htag, Modal, P } from "./UI";
-import APIClient from "../services/api-client";
-import useMyQueuesStore from "../stores/my-queues-store";
+import { Htag, Modal, P } from "../UI";
+import APIClient from "../../services/api-client";
+import useMyQueuesStore from "../../stores/my-queues-store";
 import { useNavigate } from "react-router-dom";
 
 interface ErrorResponse {

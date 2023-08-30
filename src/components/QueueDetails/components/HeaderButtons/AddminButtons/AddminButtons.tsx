@@ -2,8 +2,7 @@ import { useState } from "react";
 import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
 import { Button } from "../../../../UI";
 import styles from "./AddminButtons.module.css";
-import { DeleteQueueModal } from "../../../../DeleteQueueModal";
-import { ManagersQueueModal } from "../../../../ManagersQueueModal";
+import { DeleteQueueModal, ManagersQueueModal } from "../../../../Modals";
 
 export const AddminButtons = ({ id }: { id: number }): JSX.Element => {
   const [deletIsShown, setDeleteIsShown] = useState(false);

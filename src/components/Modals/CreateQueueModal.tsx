@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import { AxiosError } from "axios";
-import { Input, Modal, P } from "./UI";
-import APIClient from "../services/api-client";
-import { Queue } from "../interfaces/Queue";
-import useQueuesStore from "../stores/queues-store";
-import useMyQueuesStore from "../stores/my-queues-store";
+import { Input, Modal, P } from "../UI";
+import APIClient from "../../services/api-client";
+import { Queue } from "../../interfaces/Queue";
+import useQueuesStore from "../../stores/queues-store";
+import useMyQueuesStore from "../../stores/my-queues-store";
 
 interface ErrorResponse {
   name: string;
