@@ -15,24 +15,28 @@ export const QueueController = ({ current }: Props): JSX.Element => {
   return (
     <section className={styles.controller}>
       <div className={styles.body}>
-        <Htag tag="h1">Current user:</Htag>
         {current ? (
-          <CurrentUser memberId={current.memberId} />
+          <>
+            <Htag tag="h1">Current user:</Htag>
+            <CurrentUser memberId={current.memberId} />
+          </>
         ) : (
           <Htag tag="h1" color="primary">
             {" "}
-            Queue is emptu
+            Queue is empty
           </Htag>
         )}
       </div>
-      <footer className={styles.footer}>
-        <Button
-          appearance="success"
-          onClick={() => nextUserHandler(id!, current.memberId)}
-        >
-          Next user
-        </Button>
-      </footer>
+      {current && (
+        <footer className={styles.footer}>
+          <Button
+            appearance="success"
+            onClick={() => nextUserHandler(id!, current.memberId)}
+          >
+            Next user
+          </Button>
+        </footer>
+      )}
     </section>
   );
 };

@@ -14,8 +14,12 @@ export const MembersList = ({ members }: MemberListProps): JSX.Element => {
 
   return (
     <Flex className={styles.memberList}>
-      {members.map((item, index) => (
-        <Member memerId={item.memberId} index={index + 1} />
+      {members.map((item) => (
+        <Member
+          memerId={item.memberId}
+          entryIndex={item.entryIndex}
+          key={item.entryIndex}
+        />
       ))}
     </Flex>
   );

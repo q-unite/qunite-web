@@ -10,3 +10,7 @@
   align-items: center;
   gap: 20px;
 }
+
+.current {
+  background: var(--secondary-bg);
+}

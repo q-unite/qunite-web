@@ -1,8 +1,8 @@
-import cn from "classnames";
 import { useParams } from "react-router-dom";
+import cn from "classnames";
 import { StatusProps } from "./Status.props";
 import styles from "./Status.module.css";
-import { Htag, P } from "../../../UI";
+import { Htag } from "../../../UI";
 import { useGetMemberPositionInQueue } from "../../../../hooks/useGetMemberPositionInQueue";
 
 export const Status = ({
@@ -14,14 +14,18 @@ export const Status = ({
   const { data } = useGetMemberPositionInQueue(parseInt(id!), me.id);
 
   return (
-    <section className={cn(className, styles.status)} {...props}>
+    <section
+      className={cn(className, styles.status, {
+        [styles.current]: data === 1,
+      })}
+      {...props}
+    >
       {data ? (
         <>
           <Htag tag="h1">Your place in queue:</Htag>
           <Htag tag="h1" className={styles.number}>
             {data}
           </Htag>
-          <P color="gray">Waiting time: </P>
         </>
       ) : (
         <Htag tag="h1" color="primary">
