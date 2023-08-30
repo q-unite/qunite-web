@@ -8,16 +8,25 @@ import {
   useGetQueueMembers,
 } from "../hooks";
 import { QueueDetailsContext } from "../context/QueueDetailsContext";
+import QueueDetailsPageSkeleton from "../components/Skeletons/SkeletonPages/QueueDetailsPageSkeleton/QueueDetailsPageSkeleton";
 
 const QueueDetailsPage = (): JSX.Element => {
   const { id } = useParams();
-  const { data } = useGetQueue(id!);
-  const { data: me } = useGetMe();
-  const { data: creator } = useGetCreator(parseInt(id!));
-  const { data: members } = useGetQueueMembers(parseInt(id!));
+  const { data, isLoading } = useGetQueue(id!);
+  const { data: me, isLoading: isLoadingMe } = useGetMe();
+  const { data: creator, isLoading: isLoadingCreator } = useGetCreator(
+    parseInt(id!)
+  );
+  const { data: members, isLoading: isLoadingMembers } = useGetQueueMembers(
+    parseInt(id!)
+  );
 
   const isMyQueue = me?.username === creator?.username;
   const isInQueue = !!members?.find((m) => m.memberId === me?.id);
+
+  if (isLoading || isLoadingMembers || isLoadingCreator || isLoadingMe) {
+    return <QueueDetailsPageSkeleton />;
+  }
 
   if (!data || !members) {
     return (
