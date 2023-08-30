@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../../../UI";
 import styles from "./BurgerMenu.module.css";
 import Nav from "./Nav/Nav";
-import { CreateQueueModal } from "../../../CreateQueueModal";
+import { CreateQueueModal } from "../../../Modals/CreateQueueModal";
 
 export const BurgerMenu = (): JSX.Element => {
   const [isHidden, setIsHidden] = useState(true);

@@ -1,6 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useGetMe } from "../hooks";
 import Loading from "../components/Loading/Loading";
+import authStore from "../stores/auth-store";
 
 const PrivateRoutes = (): JSX.Element => {
   const { data, isLoading } = useGetMe();
@@ -10,6 +11,7 @@ const PrivateRoutes = (): JSX.Element => {
   }
 
   if (!data?.username) {
+    authStore.getState().logout();
     return <Navigate to="/login" />;
   }
 

@@ -1,0 +1,16 @@
+.member {
+  display: flex;
+  background: var(--white);
+  padding: 20px;
+  border-radius: 15px;
+  justify-contenr: space-between;
+}
+
+.row {
+  align-items: center;
+  gap: 20px;
+}
+
+.current {
+  background: var(--secondary-bg);
+}

@@ -4,10 +4,11 @@ import { Grid } from "../components/UI";
 import { useGetQueues } from "../hooks";
 import { useEffect } from "react";
 import useQueuesStore from "../stores/queues-store";
+import QueuesPageSkeleton from "../components/Skeletons/SkeletonPages/QueuesPageSkeleton/QueuesPageSkeleton";
 
 const QueuesPage = (): JSX.Element => {
   const navigate = useNavigate();
-  const { data } = useGetQueues();
+  const { data, isLoading } = useGetQueues();
   const setQueues = useQueuesStore((q) => q.setQueues);
   const queues = useQueuesStore((q) => q.queues);
 
@@ -16,6 +17,10 @@ const QueuesPage = (): JSX.Element => {
       setQueues(data);
     }
   }, [setQueues, data]);
+
+  if (isLoading) {
+    return <QueuesPageSkeleton />;
+  }
 
   return (
     <Grid>

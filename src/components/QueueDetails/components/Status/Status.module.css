@@ -1,0 +1,18 @@
+.status {
+  display: flex;
+  padding: 50px 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  border-radius: 15px;
+  background: var(--white);
+}
+
+.number {
+  font-size: 64px;
+}
+
+.current {
+  background: var(--secondary-bg);
+}
