@@ -1,24 +1,45 @@
+import { useState } from "react";
 import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
 import { Button } from "../../../../UI";
 import styles from "./AddminButtons.module.css";
+import { DeleteQueueModal } from "../../../../DeleteQueueModal";
+import { ManagersQueueModal } from "../../../../ManagersQueueModal";
 
-interface Props {
-  setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
-}
+export const AddminButtons = ({ id }: { id: number }): JSX.Element => {
+  const [deletIsShown, setDeleteIsShown] = useState(false);
+  const [managersIsShown, setManagersIsShown] = useState(false);
 
-export const AddminButtons = ({ setIsShown }: Props): JSX.Element => {
   return (
-    <div className={styles.buttons}>
-      <Button appearance="danger" icon="pencil">
-        Managers
-      </Button>
-      <Button
-        appearance="red"
-        icon="trash"
-        onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
-          handleModalOpen(event, setIsShown)
-        }
+    <>
+      <div className={styles.buttons}>
+        <Button
+          appearance="danger"
+          icon="pencil"
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+            handleModalOpen(event, setManagersIsShown)
+          }
+        >
+          Managers
+        </Button>
+        <Button
+          appearance="red"
+          icon="trash"
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) =>
+            handleModalOpen(event, setDeleteIsShown)
+          }
+        />
+      </div>
+
+      <DeleteQueueModal
+        isShown={deletIsShown}
+        setIsShown={setDeleteIsShown}
+        queueId={id}
       />
-    </div>
+      <ManagersQueueModal
+        isShown={managersIsShown}
+        setIsShown={setManagersIsShown}
+        queueId={id}
+      />
+    </>
   );
 };
