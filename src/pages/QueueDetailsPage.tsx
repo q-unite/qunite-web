@@ -7,6 +7,7 @@ import {
   useGetQueue,
   useGetQueueMembers,
 } from "../hooks";
+import { QueueDetailsContext } from "../context/QueueDetailsContext";
 
 const QueueDetailsPage = (): JSX.Element => {
   const { id } = useParams();
@@ -27,15 +28,14 @@ const QueueDetailsPage = (): JSX.Element => {
   }
 
   return (
-    <Flex style={{ gap: "20px" }}>
-      <Header
-        name={data.name}
-        isMyQueue={isMyQueue}
-        id={parseInt(id!)}
-        isInQueue={isInQueue}
-      />
-      <Main members={members} me={me!} isMyQueue={isMyQueue} />
-    </Flex>
+    <QueueDetailsContext.Provider
+      value={{ me, members, isMyQueue, id: parseInt(id!), isInQueue }}
+    >
+      <Flex style={{ gap: "20px" }}>
+        <Header name={data.name} />
+        <Main />
+      </Flex>
+    </QueueDetailsContext.Provider>
   );
 };
 

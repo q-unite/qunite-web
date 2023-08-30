@@ -1,17 +1,14 @@
-import { useParams } from "react-router-dom";
 import cn from "classnames";
 import { StatusProps } from "./Status.props";
 import styles from "./Status.module.css";
 import { Htag } from "../../../UI";
 import { useGetMemberPositionInQueue } from "../../../../hooks/useGetMemberPositionInQueue";
+import { useContext } from "react";
+import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
 
-export const Status = ({
-  me,
-  className,
-  ...props
-}: StatusProps): JSX.Element => {
-  const { id } = useParams();
-  const { data } = useGetMemberPositionInQueue(parseInt(id!), me.id);
+export const Status = ({ className, ...props }: StatusProps): JSX.Element => {
+  const context = useContext(QueueDetailsContext);
+  const { data } = useGetMemberPositionInQueue(context!.id, context!.me!.id);
 
   return (
     <section

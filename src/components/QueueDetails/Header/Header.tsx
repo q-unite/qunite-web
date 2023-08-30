@@ -1,16 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./Header.module.css";
 import { Flex, Htag } from "../../UI";
 import { HeaderProps } from "./Header.props";
 import { DeleteQueueModal } from "../../DeleteQueueModal";
 import { AddminButtons, UserButtons } from "../components";
+import { QueueDetailsContext } from "../../../context/QueueDetailsContext";
 
-export const Header = ({
-  name,
-  isMyQueue,
-  id,
-  isInQueue,
-}: HeaderProps): JSX.Element => {
+export const Header = ({ name }: HeaderProps): JSX.Element => {
+  const data = useContext(QueueDetailsContext);
   const [isShown, setIsShown] = useState(false);
 
   return (
@@ -20,17 +17,17 @@ export const Header = ({
           {name}
         </Htag>
 
-        {isMyQueue ? (
+        {data?.isMyQueue ? (
           <AddminButtons setIsShown={setIsShown} />
         ) : (
-          <UserButtons id={id} isInQueue={isInQueue} />
+          <UserButtons id={data!.id} isInQueue={data!.isInQueue} />
         )}
       </Flex>
 
       <DeleteQueueModal
         isShown={isShown}
         setIsShown={setIsShown}
-        queueId={id}
+        queueId={data!.id}
       />
     </>
   );
