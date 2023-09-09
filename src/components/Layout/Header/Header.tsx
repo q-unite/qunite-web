@@ -13,11 +13,11 @@ interface Props
 const Header = ({ className, ...props }: Props): JSX.Element => {
   return (
     <header className={cn(className, styles.header)} {...props}>
-      <Htag className={styles.logo} tag="h1" color="primary">
-        <Link to="/">queued</Link>
-      </Htag>
-      <Droppdown />
-      <BurgerMenu />
+        <Htag className={styles.logo} tag="h1" color="primary">
+          <Link to="/">queued</Link>
+        </Htag>
+        <Droppdown />
+        <BurgerMenu />
     </header>
   );
 };
