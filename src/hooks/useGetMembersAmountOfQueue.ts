@@ -7,6 +7,6 @@ export const useGetMembersAmountOfQueue = (
   id: string
 ): UseQueryResult<number, undefined> =>
   useQuery({
-    queryKey: ["members", id],
+    queryKey: ["members-amount", id],
     queryFn: () => apiClient.get(`/${id}/members-amount`),
   });
