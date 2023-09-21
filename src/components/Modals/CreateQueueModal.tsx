@@ -59,12 +59,20 @@ export const CreateQueueModal = ({
         setIsShown(false);
       }}
     >
-      <Input
-        placeholder="Type queue name"
-        ref={ref}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-      />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmitHandler();
+        }}
+      >
+        <Input
+          placeholder="Type queue name"
+          ref={ref}
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          style={{ width: "100%" }}
+        />
+      </form>
       {error && (
         <P color="primary" style={{ marginTop: "15px" }}>
           {error.response?.data.name}
