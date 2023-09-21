@@ -4,19 +4,19 @@ import { Flex, Htag } from "../../../UI";
 import styles from "./Member.module.css";
 
 interface Props {
-  memerId: number;
+  memberId: number;
   entryIndex: number;
 }
 
-export const Member = ({ memerId, entryIndex }: Props): JSX.Element => {
-  const { data } = useGetUser(memerId);
+export const Member = ({ memberId, entryIndex }: Props): JSX.Element => {
+  const { data } = useGetUser(memberId);
   const { data: me } = useGetMe();
 
   return (
     <Flex
       direction="row"
       className={cn(styles.member, {
-        [styles.current]: memerId === me?.id,
+        [styles.current]: memberId === me?.id,
       })}
     >
       <Flex direction="row" className={styles.row}>

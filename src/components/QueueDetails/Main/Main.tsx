@@ -9,7 +9,7 @@ export const Main = (): JSX.Element => {
 
   return (
     <Grid className={styles.grid}>
-      {data!.isMyQueue ? <QueueController /> : <Status />}
+      {data.isMyQueue || data.isManager ? <QueueController /> : <Status />}
       <MembersList />
     </Grid>
   );

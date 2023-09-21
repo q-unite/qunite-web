@@ -7,3 +7,6 @@ export * from "./useGetQueue";
 export * from "./useGetCreator";
 export * from "./useGetQueueMembers";
 export * from "./useGetUser";
+export * from "./useGetMemberPositionInQueue";
+export * from "./useGetMembersAmountOfQueue";
+export * from "./useGetQueueManagers";

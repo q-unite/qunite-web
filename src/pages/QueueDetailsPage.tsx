@@ -5,6 +5,7 @@ import {
   useGetCreator,
   useGetMe,
   useGetQueue,
+  useGetQueueManagers,
   useGetQueueMembers,
 } from "../hooks";
 import { QueueDetailsContext } from "../context/QueueDetailsContext";
@@ -20,11 +21,23 @@ const QueueDetailsPage = (): JSX.Element => {
   const { data: members, isLoading: isLoadingMembers } = useGetQueueMembers(
     parseInt(id!)
   );
+  const { data: managers, isLoading: isLoadingManagers } = useGetQueueManagers(
+    id!
+  );
 
   const isMyQueue = me?.username === creator?.username;
   const isInQueue = !!members?.find((m) => m.memberId === me?.id);
+  const isManager = !!managers?.find((m) => m.id === me?.id);
 
-  if (isLoading || isLoadingMembers || isLoadingCreator || isLoadingMe) {
+  console.log(isManager);
+
+  if (
+    isLoading ||
+    isLoadingMembers ||
+    isLoadingCreator ||
+    isLoadingMe ||
+    isLoadingManagers
+  ) {
     return <QueueDetailsPageSkeleton />;
   }
 
@@ -38,7 +51,14 @@ const QueueDetailsPage = (): JSX.Element => {
 
   return (
     <QueueDetailsContext.Provider
-      value={{ me, members, isMyQueue, id: parseInt(id!), isInQueue }}
+      value={{
+        me,
+        members,
+        isMyQueue,
+        id: parseInt(id!),
+        isInQueue,
+        isManager,
+      }}
     >
       <Flex style={{ gap: "20px" }}>
         <Header name={data.name} />

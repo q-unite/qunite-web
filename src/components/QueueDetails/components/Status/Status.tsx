@@ -2,13 +2,13 @@ import cn from "classnames";
 import { StatusProps } from "./Status.props";
 import styles from "./Status.module.css";
 import { Htag } from "../../../UI";
-import { useGetMemberPositionInQueue } from "../../../../hooks/useGetMemberPositionInQueue";
+import { useGetMemberPositionInQueue } from "../../../../hooks";
 import { useContext } from "react";
 import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
 
 export const Status = ({ className, ...props }: StatusProps): JSX.Element => {
   const context = useContext(QueueDetailsContext);
-  const { data } = useGetMemberPositionInQueue(context!.id, context!.me!.id);
+  const { data } = useGetMemberPositionInQueue(context.id, context.me!.id);
 
   return (
     <section

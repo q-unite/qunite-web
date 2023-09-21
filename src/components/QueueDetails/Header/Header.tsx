@@ -14,10 +14,12 @@ export const Header = ({ name }: HeaderProps): JSX.Element => {
         {name}
       </Htag>
 
-      {data?.isMyQueue ? (
-        <AddminButtons id={data!.id} />
+      {data.isMyQueue ? (
+        <AddminButtons id={data.id} />
       ) : (
-        <UserButtons id={data!.id} isInQueue={data!.isInQueue} />
+        !data.isManager && (
+          <UserButtons id={data.id} isInQueue={data.isInQueue} />
+        )
       )}
     </Flex>
   );

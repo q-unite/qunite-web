@@ -8,7 +8,9 @@ interface QueueDetailsContextProps {
   id: number;
   isMyQueue: boolean;
   isInQueue: boolean;
+  isManager: boolean;
 }
 
-export const QueueDetailsContext =
-  createContext<QueueDetailsContextProps | null>(null);
+export const QueueDetailsContext = createContext<QueueDetailsContextProps>(
+  {} as QueueDetailsContextProps
+);

@@ -7,7 +7,7 @@ import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
 export const MembersList = (): JSX.Element => {
   const data = useContext(QueueDetailsContext);
 
-  if (data!.members.length === 0) {
+  if (data.members.length === 0) {
     return (
       <Htag tag="h2" color="gray">
         Queue is empty
@@ -17,9 +17,9 @@ export const MembersList = (): JSX.Element => {
 
   return (
     <Flex className={styles.memberList}>
-      {data!.members.map((item) => (
+      {data.members.map((item) => (
         <Member
-          memerId={item.memberId}
+          memberId={item.memberId}
           entryIndex={item.entryIndex}
           key={item.entryIndex}
         />

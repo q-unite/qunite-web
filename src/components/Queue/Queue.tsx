@@ -2,7 +2,7 @@ import cn from "classnames";
 import { QueueProps } from "./QueueProps.props";
 import { Htag, P } from "../UI";
 import styles from "./Queue.module.css";
-import { useGetMembersAmountOfQueue } from "../../hooks/useGetMembersAmountOfQueue";
+import { useGetMembersAmountOfQueue } from "../../hooks";
 
 export const Queue = ({
   className,
