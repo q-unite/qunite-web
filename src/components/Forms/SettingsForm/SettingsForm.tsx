@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
-import { AxiosResponse } from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import InputBox from "../InputBox";
 import { schema, FormData } from "./schema";
@@ -8,11 +7,8 @@ import styles from "./SettingsForm.module.css";
 import { Button, P } from "../../UI";
 import { useGetMe } from "../../../hooks";
 import { onSubmit } from "./onSubmit";
-import APIClient from "../../../services/api-client";
 import { DeleteUserModal } from "../../Modals";
 import { handleModalOpen } from "../../../handlers/handleModalOpen";
-
-const apiClient = new APIClient("users/self");
 
 export const SettingsForm = (): JSX.Element => {
   const { data, refetch } = useGetMe();

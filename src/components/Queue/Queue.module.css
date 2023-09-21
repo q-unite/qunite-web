@@ -1,5 +1,7 @@
 .queue {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
   background: var(--white);
   border-radius: 15px;
   padding: 20px;

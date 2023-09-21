@@ -9,6 +9,7 @@ import {
 } from "../hooks";
 import { QueueDetailsContext } from "../context/QueueDetailsContext";
 import QueueDetailsPageSkeleton from "../components/Skeletons/SkeletonPages/QueueDetailsPageSkeleton/QueueDetailsPageSkeleton";
+import { useGetMemberPositionInQueue } from "../hooks/useGetMemberPositionInQueue";
 
 const QueueDetailsPage = (): JSX.Element => {
   const { id } = useParams();
@@ -20,11 +21,18 @@ const QueueDetailsPage = (): JSX.Element => {
   const { data: members, isLoading: isLoadingMembers } = useGetQueueMembers(
     parseInt(id!)
   );
+  const { data: placeInQueue, isLoading: isLoadingPosition } =
+    useGetMemberPositionInQueue(parseInt(id!), me!.id);
 
   const isMyQueue = me?.username === creator?.username;
-  const isInQueue = !!members?.find((m) => m.memberId === me?.id);
 
-  if (isLoading || isLoadingMembers || isLoadingCreator || isLoadingMe) {
+  if (
+    isLoading ||
+    isLoadingMembers ||
+    isLoadingCreator ||
+    isLoadingMe ||
+    isLoadingPosition
+  ) {
     return <QueueDetailsPageSkeleton />;
   }
 
@@ -38,7 +46,13 @@ const QueueDetailsPage = (): JSX.Element => {
 
   return (
     <QueueDetailsContext.Provider
-      value={{ me, members, isMyQueue, id: parseInt(id!), isInQueue }}
+      value={{
+        me,
+        members,
+        isMyQueue,
+        id: parseInt(id!),
+        isInQueue: Boolean(placeInQueue),
+      }}
     >
       <Flex style={{ gap: "20px" }}>
         <Header name={data.name} />

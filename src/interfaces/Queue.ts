@@ -1,5 +1,5 @@
 export interface Queue {
-  id: number;
+  id: string;
   name: string;
   creatorId: number;
 }

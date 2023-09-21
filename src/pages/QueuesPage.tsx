@@ -26,6 +26,7 @@ const QueuesPage = (): JSX.Element => {
     <Grid>
       {queues.map((item) => (
         <Queue
+          id={item.id}
           name={item.name}
           key={item.id}
           onClick={() => navigate(`/queues/${item.id}`)}
