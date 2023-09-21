@@ -7,4 +7,5 @@
   padding: 20px;
   overflow: hidden;
   cursor: pointer;
+  text-wrap: nowrap;
 }
