@@ -1,11 +1,12 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
-import { Input, Modal, P } from "../UI";
+import { Modal, P } from "../UI";
 import APIClient from "../../services/api-client";
 import { Queue } from "../../interfaces/Queue";
 import useQueuesStore from "../../stores/queues-store";
 import useMyQueuesStore from "../../stores/my-queues-store";
+import { Form } from "./components/Form";
 
 interface ErrorResponse {
   name: string;
@@ -22,7 +23,6 @@ export const CreateQueueModal = ({
   isShown,
   setIsShown,
 }: Props): JSX.Element => {
-  const ref = useRef<HTMLInputElement | null>(null);
   const [text, setText] = useState("");
   const [error, setError] = useState<AxiosError<ErrorResponse> | null>(null);
   const addToQueues = useQueuesStore((q) => q.addToQueues);
@@ -59,20 +59,12 @@ export const CreateQueueModal = ({
         setIsShown(false);
       }}
     >
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          onSubmitHandler();
-        }}
-      >
-        <Input
-          placeholder="Type queue name"
-          ref={ref}
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          style={{ width: "100%" }}
-        />
-      </form>
+      <Form
+        onSubmitHandler={onSubmitHandler}
+        placeholder="Type queue name"
+        setText={setText}
+        text={text}
+      />
       {error && (
         <P color="primary" style={{ marginTop: "15px" }}>
           {error.response?.data.name}

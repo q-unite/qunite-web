@@ -1,4 +1,12 @@
-import { Htag, Modal } from "../UI";
+import { useState } from "react";
+import APIClient from "../../services/api-client";
+import { Modal, P } from "../UI";
+import { Form } from "./components/Form";
+import { AxiosError } from "axios";
+
+interface ErrorResponse {
+  message: string;
+}
 
 interface Props {
   queueId?: number;
@@ -6,23 +14,57 @@ interface Props {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const apiClient = new APIClient("/queues");
+
 export const ManagersQueueModal = ({
+  queueId,
   isShown,
   setIsShown,
 }: Props): JSX.Element => {
+  const [managerId, setManagerId] = useState("");
+  const [error, setError] = useState<AxiosError<ErrorResponse> | null | string>(
+    null
+  );
+
+  const onSubmitHandler = (): void => {
+    if (managerId.length > 0) {
+      apiClient
+        .post({ additional: `/${queueId}/managers/${managerId}` })
+        .then(() => setIsShown(false))
+        .catch((err) => {
+          setError(err);
+        })
+        .finally(() => setManagerId(""));
+    } else {
+      setError && setError("Please specify manager id");
+    }
+  };
+
   return (
     <Modal
       isShown={isShown}
       setIsShown={setIsShown}
       title="Managers"
       successButtonText="Save"
-      successButtonClick={() => {}}
+      successButtonClick={onSubmitHandler}
       dangerButtonText="Cancel"
-      dangerButtonClick={() => {}}
+      dangerButtonClick={() => {
+        setManagerId("");
+        setError(null);
+        setIsShown(false);
+      }}
     >
-      <Htag tag="h2" color="primary">
-        No functionality for now
-      </Htag>
+      <Form
+        onSubmitHandler={onSubmitHandler}
+        placeholder="Search for a manager"
+        setText={setManagerId}
+        text={managerId}
+      />
+      {error && (
+        <P color="primary" style={{ marginTop: "15px" }}>
+          {typeof error === "string" ? error : error.response?.data.message}
+        </P>
+      )}
     </Modal>
   );
 };
