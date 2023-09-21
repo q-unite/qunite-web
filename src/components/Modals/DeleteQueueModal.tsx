@@ -37,7 +37,6 @@ export const DeleteQueueModal = ({
       })
       .catch((err) => {
         setError(err);
-        console.log(err);
       });
   };
 

@@ -29,8 +29,6 @@ const QueueDetailsPage = (): JSX.Element => {
   const isInQueue = !!members?.find((m) => m.memberId === me?.id);
   const isManager = !!managers?.find((m) => m.id === me?.id);
 
-  console.log(isManager);
-
   if (
     isLoading ||
     isLoadingMembers ||

@@ -13,14 +13,9 @@ export const DeleteUserModal = ({
   setIsShown,
 }: Props): JSX.Element => {
   const onDeleteHandler = (): void => {
-    apiClient
-      .delete()
-      .then(() => {
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    apiClient.delete().then(() => {
+      window.location.reload();
+    });
   };
 
   return (
