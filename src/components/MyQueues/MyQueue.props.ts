@@ -1,4 +1,4 @@
-import { Queue } from "../../interfaces/Queue";
+import { Queue } from "../../types/queue";
 
 interface MyQueueProps {
   myQueues?: Queue[];

@@ -2,11 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 import { Modal, P } from "../UI";
-import APIClient from "../../services/api-client";
-import { Queue } from "../../interfaces/Queue";
 import useQueuesStore from "../../stores/queues-store";
 import useMyQueuesStore from "../../stores/my-queues-store";
 import { Form } from "./components/Form";
+import QueueApi from "../../lib/api/queue/QueueApi";
 
 interface ErrorResponse {
   name: string;
@@ -16,8 +15,6 @@ interface Props {
   isShown: boolean;
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-const apiClient = new APIClient<Queue>("/queues");
 
 export const CreateQueueModal = ({
   isShown,
@@ -30,8 +27,7 @@ export const CreateQueueModal = ({
   const navigate = useNavigate();
 
   const onSubmitHandler = (): void => {
-    apiClient
-      .post({ data: { params: { name: text } } })
+    QueueApi.createQueue({ name: text })
       .then((res) => {
         setError(null);
         setIsShown(false);

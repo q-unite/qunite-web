@@ -1,6 +1,6 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import { Queue } from "../interfaces/Queue";
+import { Queue } from "../types/queue";
 import QueueService from "../lib/services/queue/QueueService";
 
 export const useGetQueues = (): UseQueryResult<Queue[], AxiosError> => {
