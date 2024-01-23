@@ -6,6 +6,11 @@ class QueueApi {
     const { data } = await client.get<Queue[]>("/queues");
     return data;
   }
+
+  async getQueueById(id: string): Promise<Queue> {
+    const { data } = await client.get<Queue>(`/queues/${id}`);
+    return data;
+  }
 }
 
 export default new QueueApi();
