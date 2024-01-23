@@ -1,14 +1,13 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { User } from "../types/user";
 import { AxiosError } from "axios";
-import APIClient from "../services/api-client";
-
-const apiClient = new APIClient("/queues");
+import QueueApi from "../lib/api/queue/QueueApi";
+import { User } from "../types/user";
 
 export const useGetQueueManagers = (
   queueId: string
 ): UseQueryResult<User[], AxiosError> =>
   useQuery({
     queryKey: ["managers", queueId],
-    queryFn: () => apiClient.get(`/${queueId}/managers`),
+    queryFn: () => QueueApi.getManagersOfQueue(queueId),
+    retry: false,
   });

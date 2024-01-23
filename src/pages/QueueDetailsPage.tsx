@@ -15,11 +15,9 @@ const QueueDetailsPage = (): JSX.Element => {
   const { id } = useParams();
   const { data, isLoading } = useGetQueue(id!);
   const { data: me, isLoading: isLoadingMe } = useGetMe();
-  const { data: creator, isLoading: isLoadingCreator } = useGetCreator(
-    parseInt(id!)
-  );
+  const { data: creator, isLoading: isLoadingCreator } = useGetCreator(id!);
   const { data: members, isLoading: isLoadingMembers } = useGetQueueMembers(
-    parseInt(id!)
+    id!
   );
   const { data: managers, isLoading: isLoadingManagers } = useGetQueueManagers(
     id!
