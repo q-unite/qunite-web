@@ -5,7 +5,10 @@ import { CreateQueueBody } from "./types/CreateQueueBody";
 
 class QueueApi {
   async getAllQueues(): Promise<Queue[]> {
-    const { data } = await client.get<Queue[]>("/queues");
+    const { data } = await client.get<Queue[]>(
+      "/queues",
+      getAuthorizationHeader()
+    );
     return data;
   }
 
