@@ -28,6 +28,14 @@ class QueueApi {
     );
     return data;
   }
+
+  async getMembersAmountOfQueue(id: string): Promise<number> {
+    const { data } = await client.get<number>(
+      `/queues/${id}/members`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
 }
 
 export default new QueueApi();
