@@ -1,5 +1,5 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { User } from "../interfaces/User";
+import { User } from "../types/user";
 import { AxiosError } from "axios";
 import APIClient from "../services/api-client";
 

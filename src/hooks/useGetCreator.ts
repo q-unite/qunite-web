@@ -1,7 +1,7 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
 import { AxiosError } from "axios";
-import { User } from "../interfaces/User";
+import { User } from "../types/user";
 
 const apiClient = new APIClient<User>("/queues");
 

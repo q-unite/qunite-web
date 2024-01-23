@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { Member } from "../interfaces/Member";
-import { User } from "../interfaces/User";
+import { User } from "../types/user";
 
 interface QueueDetailsContextProps {
   me?: User;

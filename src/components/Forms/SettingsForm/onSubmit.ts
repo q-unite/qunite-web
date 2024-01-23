@@ -2,7 +2,7 @@ import React from "react";
 import { FieldValues } from "react-hook-form";
 import { AxiosError } from "axios";
 import APIClient from "../../../services/api-client";
-import { User } from "../../../interfaces/User";
+import { User } from "../../../types/user";
 
 interface ErrorResponse {
   message: string;
