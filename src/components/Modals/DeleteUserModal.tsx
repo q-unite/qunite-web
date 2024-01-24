@@ -1,7 +1,5 @@
 import { Htag, Modal } from "../UI";
-import APIClient from "../../services/api-client";
-
-const apiClient = new APIClient("/users/self");
+import UserApi from "../../lib/api/users/UserApi";
 
 interface Props {
   isShown: boolean;
@@ -13,7 +11,7 @@ export const DeleteUserModal = ({
   setIsShown,
 }: Props): JSX.Element => {
   const onDeleteHandler = (): void => {
-    apiClient.delete().then(() => {
+    UserApi.deleteMe().then(() => {
       window.location.reload();
     });
   };

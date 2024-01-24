@@ -1,37 +1,38 @@
-import { useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import InputBox from "../InputBox";
-import { schema, FormData } from "./schema";
-import styles from "./SettingsForm.module.css";
-import { Button, P } from "../../UI";
-import { useGetMe } from "../../../hooks";
-import { onSubmit } from "./onSubmit";
-import { DeleteUserModal } from "../../Modals";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { handleModalOpen } from "../../../handlers/handleModalOpen";
+import { useGetMe } from "../../../hooks";
+import UserApi from "../../../lib/api/users/UserApi";
+import { UpdateUserBody } from "../../../lib/api/users/types/UpdateUserBody";
+import getErrorMessage from "../../../lib/utils/getErrorMessage";
+import { DeleteUserModal } from "../../Modals";
+import { Button, P } from "../../UI";
+import InputBox from "../InputBox";
+import styles from "./SettingsForm.module.css";
+import { FormData, schema } from "./schema";
 
 export const SettingsForm = (): JSX.Element => {
   const { data, refetch } = useGetMe();
-  const [error, setError] = useState("");
   const [isShown, setIsShown] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
+  const onSubmit = handleSubmit((data: UpdateUserBody) => {
+    UserApi.updateUserAccount(data)
+      .catch((error) => setError("root", { message: getErrorMessage(error) }))
+      .then(() => refetch());
+  });
+
   return (
     <div className={styles.container}>
-      <form
-        className={styles.form}
-        onSubmit={handleSubmit((data: FieldValues) => {
-          onSubmit({ data, endpoint: "/users/self", setError }).then(() =>
-            refetch()
-          );
-        })}
-      >
+      <form className={styles.form} onSubmit={onSubmit}>
         <InputBox
           id="login"
           placeholder="Type your login"
@@ -48,7 +49,7 @@ export const SettingsForm = (): JSX.Element => {
           error={errors.username?.message}
           defaultValue={data?.username}
         />
-        {error && <P color="primary">{error}</P>}
+        {errors.root && <P color="primary">{errors.root.message}</P>}
         <Button type="submit" appearance="success">
           Save
         </Button>
