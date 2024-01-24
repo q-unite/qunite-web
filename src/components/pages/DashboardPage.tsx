@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import MyQueues from "../components/MyQueues/MyQueues";
-import { Flex, Htag } from "../components/common/ui";
-import { useGetMe, useGetMyQueues } from "../hooks";
-import useMyQueuesStore from "../stores/my-queues-store";
+import MyQueues from "../MyQueues/MyQueues";
+import { Flex, Htag } from "../common/ui";
+import { useGetMe, useGetMyQueues } from "../../hooks";
+import useMyQueuesStore from "../../stores/my-queues-store";
 
 const DashboardPage = (): JSX.Element => {
   const { data } = useGetMe();

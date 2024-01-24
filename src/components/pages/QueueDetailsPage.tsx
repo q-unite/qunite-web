@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import { Header, Main } from "../components/QueueDetails";
-import { Flex, Htag } from "../components/common/ui";
+import { Header, Main } from "../QueueDetails";
+import { Flex, Htag } from "../common/ui";
 import {
   useGetCreator,
   useGetMe,
   useGetQueue,
   useGetQueueManagers,
   useGetQueueMembers,
-} from "../hooks";
-import { QueueDetailsContext } from "../context/QueueDetailsContext";
-import QueueDetailsPageSkeleton from "../components/Skeletons/SkeletonPages/QueueDetailsPageSkeleton/QueueDetailsPageSkeleton";
+} from "../../hooks";
+import { QueueDetailsContext } from "../../context/QueueDetailsContext";
+import QueueDetailsPageSkeleton from "../Skeletons/SkeletonPages/QueueDetailsPageSkeleton/QueueDetailsPageSkeleton";
 
 const QueueDetailsPage = (): JSX.Element => {
   const { id } = useParams();

@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { Queue } from "../components/Queue/Queue";
-import { Grid } from "../components/common/ui";
-import { useGetQueues } from "../hooks";
+import { Queue } from "../Queue/Queue";
+import { Grid } from "../common/ui";
+import { useGetQueues } from "../../hooks";
 import { useEffect } from "react";
-import useQueuesStore from "../stores/queues-store";
-import QueuesPageSkeleton from "../components/Skeletons/SkeletonPages/QueuesPageSkeleton/QueuesPageSkeleton";
+import useQueuesStore from "../../stores/queues-store";
+import QueuesPageSkeleton from "../Skeletons/SkeletonPages/QueuesPageSkeleton/QueuesPageSkeleton";
 
 const QueuesPage = (): JSX.Element => {
   const navigate = useNavigate();

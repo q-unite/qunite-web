@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoutes from "./PrivateRoutes";
 import Layout from "../components/Layout/Layout";
-import QueuesPage from "../pages/QueuesPage";
-import DashboardPage from "../pages/DashboardPage";
-import SettingsPage from "../pages/SettingsPage";
-import SignupPage from "../pages/auth/SignupPage";
-import LoginPage from "../pages/auth/LoginPage";
-import QueueDetailsPage from "../pages/QueueDetailsPage";
+import QueuesPage from "../components/pages/QueuesPage";
+import DashboardPage from "../components/pages/DashboardPage";
+import SettingsPage from "../components/pages/SettingsPage";
+import SignupPage from "../components/pages/SignupPage";
+import LoginPage from "../components/pages/LoginPage";
+import QueueDetailsPage from "../components/pages/QueueDetailsPage";
 
 const router = createBrowserRouter([
   {
