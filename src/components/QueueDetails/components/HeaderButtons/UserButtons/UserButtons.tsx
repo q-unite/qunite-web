@@ -1,8 +1,5 @@
+import QueueApi from "../../../../../lib/api/queue/QueueApi";
 import { Button } from "../../../../UI";
-import {
-  enrolleMeHandller,
-  leaveMeFromTheQueueHandler,
-} from "../../../handlers";
 
 interface Props {
   id: number;
@@ -14,7 +11,7 @@ export const UserButtons = ({ id, isInQueue }: Props): JSX.Element => {
     <Button
       appearance="success"
       icon="plus"
-      onClick={() => enrolleMeHandller(id)}
+      onClick={() => QueueApi.enrollMemberToQueue(id.toString())}
     >
       Enroll me
     </Button>
@@ -22,7 +19,7 @@ export const UserButtons = ({ id, isInQueue }: Props): JSX.Element => {
     <Button
       appearance="danger"
       icon="logout"
-      onClick={() => leaveMeFromTheQueueHandler(id)}
+      onClick={() => QueueApi.leaveMemberFromQueue(id.toString())}
     >
       Leave
     </Button>

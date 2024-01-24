@@ -47,6 +47,22 @@ class QueueApi {
     return data;
   }
 
+  async enrollMemberToQueue(id: string): Promise<void> {
+    const { data } = await client.post<void>(
+      `/queues/${id}/members`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
+
+  async leaveMemberFromQueue(id: string): Promise<void> {
+    const { data } = await client.delete<void>(
+      `/queues/${id}/members`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
+
   async getCreatorOfQueue(id: string): Promise<User> {
     const { data } = await client.get<User>(
       `/queues/${id}/creator`,
