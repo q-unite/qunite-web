@@ -80,6 +80,17 @@ class QueueApi {
     return data;
   }
 
+  async getMemberPositionInQueue(
+    id: string,
+    memberId: string
+  ): Promise<number> {
+    const { data } = await client.get<number>(
+      `/queues/${id}/members/${memberId}`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
+
   async deleteMemberFromQueue(id: string, memberId: string): Promise<void> {
     const { data } = await client.delete<void>(
       `/queues/${id}/members/${memberId}`,
