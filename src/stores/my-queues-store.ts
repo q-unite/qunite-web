@@ -8,7 +8,7 @@ interface MyQueuesStore {
   // eslint-disable-next-line no-unused-vars
   addToMyQueues: (queue: Queue) => void;
   // eslint-disable-next-line no-unused-vars
-  removeFromMyQueues: (queueId: number) => void;
+  removeFromMyQueues: (queueId: string) => void;
 }
 
 const useMyQueuesStore = create<MyQueuesStore>((set) => ({

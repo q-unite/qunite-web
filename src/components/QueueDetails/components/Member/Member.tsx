@@ -1,7 +1,8 @@
 import cn from "classnames";
-import { useGetMe, useGetUser } from "../../../../hooks";
+import { useGetUser } from "../../../../hooks";
 import { Flex, Htag } from "../../../common/ui";
 import styles from "./Member.module.css";
+import useAuth from "../../../../hooks/use-auth";
 
 interface Props {
   memberId: number;
@@ -10,13 +11,13 @@ interface Props {
 
 export const Member = ({ memberId, entryIndex }: Props): JSX.Element => {
   const { data } = useGetUser(memberId);
-  const { data: me } = useGetMe();
+  const { user } = useAuth();
 
   return (
     <Flex
       direction="row"
       className={cn(styles.member, {
-        [styles.current]: memberId === me?.id,
+        [styles.current]: memberId.toString() === user?.id,
       })}
     >
       <Flex direction="row" className={styles.row}>

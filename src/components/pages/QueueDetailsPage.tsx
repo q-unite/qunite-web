@@ -3,18 +3,18 @@ import { Header, Main } from "../QueueDetails";
 import { Flex, Htag } from "../common/ui";
 import {
   useGetCreator,
-  useGetMe,
   useGetQueue,
   useGetQueueManagers,
   useGetQueueMembers,
 } from "../../hooks";
 import { QueueDetailsContext } from "../../context/QueueDetailsContext";
 import QueueDetailsPageSkeleton from "../Skeletons/SkeletonPages/QueueDetailsPageSkeleton/QueueDetailsPageSkeleton";
+import useAuth from "../../hooks/use-auth";
 
 const QueueDetailsPage = (): JSX.Element => {
   const { id } = useParams();
   const { data, isLoading } = useGetQueue(id!);
-  const { data: me, isLoading: isLoadingMe } = useGetMe();
+  const { user } = useAuth();
   const { data: creator, isLoading: isLoadingCreator } = useGetCreator(id!);
   const { data: members, isLoading: isLoadingMembers } = useGetQueueMembers(
     id!
@@ -23,17 +23,11 @@ const QueueDetailsPage = (): JSX.Element => {
     id!
   );
 
-  const isMyQueue = me?.username === creator?.username;
-  const isInQueue = !!members?.find((m) => m.memberId === me?.id);
-  const isManager = !!managers?.find((m) => m.id === me?.id);
+  const isMyQueue = user.username === creator?.username;
+  const isInQueue = !!members?.find((m) => m.memberId.toString() === user.id);
+  const isManager = !!managers?.find((m) => m.id === user.id);
 
-  if (
-    isLoading ||
-    isLoadingMembers ||
-    isLoadingCreator ||
-    isLoadingMe ||
-    isLoadingManagers
-  ) {
+  if (isLoading || isLoadingMembers || isLoadingCreator || isLoadingManagers) {
     return <QueueDetailsPageSkeleton />;
   }
 
@@ -48,10 +42,9 @@ const QueueDetailsPage = (): JSX.Element => {
   return (
     <QueueDetailsContext.Provider
       value={{
-        me,
         members,
         isMyQueue,
-        id: parseInt(id!),
+        id: id!,
         isInQueue,
         isManager,
       }}

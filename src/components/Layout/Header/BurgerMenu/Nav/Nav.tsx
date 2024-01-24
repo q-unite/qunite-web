@@ -1,7 +1,7 @@
 import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
+import AuthService from "../../../../../lib/services/auth/AuthService";
 import { Button } from "../../../../common/ui";
 import { Ul } from "../../../Sidebar/Ul/Ul";
-import { handleLogout } from "../../handleLogout";
 import styles from "./Nav.module.css";
 import { NavProps } from "./Nav.props";
 
@@ -17,7 +17,7 @@ const Nav = ({ isHidden, setIsShown }: NavProps): JSX.Element => {
         >
           Create queue
         </Button>
-        <Button appearance="danger" onClick={() => handleLogout()}>
+        <Button appearance="danger" onClick={() => AuthService.logout()}>
           Log out
         </Button>
       </footer>

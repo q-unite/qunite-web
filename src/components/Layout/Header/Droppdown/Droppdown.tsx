@@ -4,13 +4,14 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import { P } from "../../../common/ui";
 import styles from "./Droppdown.module.css";
 import { Content } from "./Content";
-import { useGetMe, useClickOutOfBlock } from "../../../../hooks";
+import { useClickOutOfBlock } from "../../../../hooks";
 import { CreateQueueModal } from "../../../Modals/CreateQueueModal";
+import useAuth from "../../../../hooks/use-auth";
 
 export const Droppdown = (): JSX.Element => {
+  const { user } = useAuth();
   const [visible, setVisible] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const user = useGetMe();
   const [isShown, setIsShown] = useState(false);
 
   useClickOutOfBlock(dropdownRef, setVisible);
@@ -20,7 +21,7 @@ export const Droppdown = (): JSX.Element => {
       <div ref={dropdownRef} className={styles.droppdown}>
         <div className={styles.user} onClick={() => setVisible(!visible)}>
           <P size="m" color="black">
-            {user.data?.username}
+            {user.username}
           </P>
           <IoChevronDownOutline size={16} color="#FF0065" />
         </div>

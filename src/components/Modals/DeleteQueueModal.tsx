@@ -10,7 +10,7 @@ interface ErrorResponse {
 }
 
 interface Props {
-  queueId?: number;
+  queueId: string;
   isShown: boolean;
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -25,11 +25,11 @@ export const DeleteQueueModal = ({
   const navigate = useNavigate();
 
   const onDeleteHandler = (): void => {
-    QueueApi.deleteQueueById(queueId!.toString())
+    QueueApi.deleteQueueById(queueId)
       .then(() => {
         setError(null);
         setIsShown(false);
-        queueId && removeFromMyQueues(queueId);
+        removeFromMyQueues(queueId);
         navigate("/dashboard");
       })
       .catch((err) => {

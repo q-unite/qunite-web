@@ -4,7 +4,7 @@ import QueueApi from "../lib/api/queue/QueueApi";
 
 export const useGetMemberPositionInQueue = (
   queueId: number,
-  memberId: number
+  memberId: string
 ): UseQueryResult<number, AxiosError> =>
   useQuery({
     queryKey: ["position", queueId, memberId],

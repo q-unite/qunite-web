@@ -2,7 +2,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { handleModalOpen } from "../../../handlers/handleModalOpen";
-import { useGetMe } from "../../../hooks";
 import UserApi from "../../../lib/api/users/UserApi";
 import { UpdateUserBody } from "../../../lib/api/users/types/UpdateUserBody";
 import getErrorMessage from "../../../lib/utils/getErrorMessage";
@@ -11,10 +10,12 @@ import { Button, P } from "../../common/ui";
 import InputBox from "../InputBox";
 import styles from "./SettingsForm.module.css";
 import { FormData, schema } from "./schema";
+import useAuth from "../../../hooks/use-auth";
 
 export const SettingsForm = (): JSX.Element => {
-  const { data, refetch } = useGetMe();
+  const { user, update } = useAuth();
   const [isShown, setIsShown] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -27,7 +28,7 @@ export const SettingsForm = (): JSX.Element => {
   const onSubmit = handleSubmit((data: UpdateUserBody) => {
     UserApi.updateUserAccount(data)
       .catch((error) => setError("root", { message: getErrorMessage(error) }))
-      .then(() => refetch());
+      .then(() => update());
   });
 
   return (
@@ -39,7 +40,7 @@ export const SettingsForm = (): JSX.Element => {
           type="text"
           error={errors.email?.message}
           {...register("email")}
-          defaultValue={data?.email}
+          defaultValue={user.email}
         />
         <InputBox
           id="username"
@@ -47,7 +48,7 @@ export const SettingsForm = (): JSX.Element => {
           {...register("username")}
           type="text"
           error={errors.username?.message}
-          defaultValue={data?.username}
+          defaultValue={user.username}
         />
         {errors.root && <P color="primary">{errors.root.message}</P>}
         <Button type="submit" appearance="success">

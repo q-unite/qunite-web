@@ -1,18 +1,18 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { Button, P } from "../../common/ui";
 import styles from "./SignupForm.module.css";
 import { schema, FormData } from "./schema";
 import InputBox from "../InputBox";
-import { useGetMe } from "../../../hooks";
 import AuthService from "../../../lib/services/auth/AuthService";
 import getErrorMessage from "../../../lib/utils/getErrorMessage";
+import useAuth from "../../../hooks/use-auth";
 
 const SignupForm = (): JSX.Element => {
   const navigate = useNavigate();
-  const { data, refetch } = useGetMe();
+  const { update } = useAuth();
 
   const {
     register,
@@ -23,21 +23,17 @@ const SignupForm = (): JSX.Element => {
     resolver: zodResolver(schema),
   });
 
-  const isAuthenticated = data?.username;
-
   const onSubmit = handleSubmit(async (data) => {
     try {
       await AuthService.signUp(data);
-      await refetch().then(() => navigate("/login"));
+      await update().then(() => navigate("/login"));
     } catch (error: unknown) {
       const message = getErrorMessage(error);
       setError("root", { message });
     }
   });
 
-  return isAuthenticated ? (
-    <Navigate to="/" />
-  ) : (
+  return (
     <form className={styles.form} onSubmit={onSubmit}>
       <InputBox
         placeholder="Type your email"

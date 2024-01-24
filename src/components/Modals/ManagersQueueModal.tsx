@@ -9,7 +9,7 @@ interface ErrorResponse {
 }
 
 interface Props {
-  queueId?: number;
+  queueId: string;
   isShown: boolean;
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -26,7 +26,7 @@ export const ManagersQueueModal = ({
 
   const onSubmitHandler = (): void => {
     if (managerId.length > 0) {
-      QueueApi.addManagerToQueue(queueId!.toString(), managerId)
+      QueueApi.addManagerToQueue(queueId, managerId)
         .then(() => setIsShown(false))
         .catch((err) => {
           setError(err);

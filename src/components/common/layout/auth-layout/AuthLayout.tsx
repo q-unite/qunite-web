@@ -1,9 +1,17 @@
 import { FunctionComponent } from "react";
+import { Navigate } from "react-router-dom";
+import useAuth from "../../../../hooks/use-auth";
 import styles from "./AuthLayout.module.css";
 import { AuthLayoutProps } from "./AuthLayout.props";
 import { Sidebar } from "./components/sidebar";
 
 const AuthLayout = ({ children }: AuthLayoutProps): JSX.Element => {
+  const { isLoggedIn } = useAuth();
+
+  if (isLoggedIn) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className={styles.wrapper}>
       <Sidebar className={styles.sidebar} />

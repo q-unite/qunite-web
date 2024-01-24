@@ -2,11 +2,12 @@ import { useContext } from "react";
 import styles from "./Header.module.css";
 import { Flex, Htag } from "../../common/ui";
 import { HeaderProps } from "./Header.props";
-import { AddminButtons, UserButtons } from "../components";
+import { AdminButtons, UserButtons } from "../components";
 import { QueueDetailsContext } from "../../../context/QueueDetailsContext";
 
 export const Header = ({ name }: HeaderProps): JSX.Element => {
-  const data = useContext(QueueDetailsContext);
+  const { id, isManager, isInQueue, isMyQueue } =
+    useContext(QueueDetailsContext);
 
   return (
     <Flex direction="row" className={styles.header}>
@@ -14,12 +15,10 @@ export const Header = ({ name }: HeaderProps): JSX.Element => {
         {name}
       </Htag>
 
-      {data.isMyQueue ? (
-        <AddminButtons id={data.id} />
+      {isMyQueue ? (
+        <AdminButtons id={id} />
       ) : (
-        !data.isManager && (
-          <UserButtons id={data.id} isInQueue={data.isInQueue} />
-        )
+        !isManager && <UserButtons id={id} isInQueue={isInQueue} />
       )}
     </Flex>
   );

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
 import { Button } from "../../../../common/ui";
-import styles from "./AddminButtons.module.css";
+import styles from "./AdminButtons.module.css";
 import { DeleteQueueModal, ManagersQueueModal } from "../../../../Modals";
 
-export const AddminButtons = ({ id }: { id: number }): JSX.Element => {
-  const [deletIsShown, setDeleteIsShown] = useState(false);
+export const AdminButtons = ({ id }: { id: string }): JSX.Element => {
+  const [deleteIsShown, setDeleteIsShown] = useState(false);
   const [managersIsShown, setManagersIsShown] = useState(false);
 
   return (
@@ -30,7 +30,7 @@ export const AddminButtons = ({ id }: { id: number }): JSX.Element => {
       </div>
 
       <DeleteQueueModal
-        isShown={deletIsShown}
+        isShown={deleteIsShown}
         setIsShown={setDeleteIsShown}
         queueId={id}
       />

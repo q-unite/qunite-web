@@ -5,11 +5,11 @@ import { useContext } from "react";
 import { QueueDetailsContext } from "../../../context/QueueDetailsContext";
 
 export const Main = (): JSX.Element => {
-  const data = useContext(QueueDetailsContext);
+  const { isMyQueue, isManager } = useContext(QueueDetailsContext);
 
   return (
     <Grid className={styles.grid}>
-      {data.isMyQueue || data.isManager ? <QueueController /> : <Status />}
+      {isMyQueue || isManager ? <QueueController /> : <Status />}
       <MembersList />
     </Grid>
   );

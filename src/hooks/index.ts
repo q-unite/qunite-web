@@ -1,4 +1,3 @@
-export * from "./useGetMe";
 export * from "./useClickOutOfBlock";
 export * from "./useGetQueues";
 export * from "./useGetMyQueues";
