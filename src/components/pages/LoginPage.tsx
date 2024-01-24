@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { withAuthLayout } from "../AuthLayout/AuthLayout";
+import { withAuthLayout } from "../common/layout/auth-layout";
 import LoginForm from "../Forms/LoginForm/LoginForm";
 import { P } from "../common/ui";
 

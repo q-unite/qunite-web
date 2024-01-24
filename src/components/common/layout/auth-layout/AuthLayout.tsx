@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { Sidebar } from "./Sidebar/Sidebar";
 import styles from "./AuthLayout.module.css";
 import { AuthLayoutProps } from "./AuthLayout.props";
+import { Sidebar } from "./components/sidebar";
 
 const AuthLayout = ({ children }: AuthLayoutProps): JSX.Element => {
   return (
