@@ -1,3 +1,4 @@
+import { Queue } from "../../../types/queue";
 import { User } from "../../../types/user";
 import client from "../instance";
 import { getAuthorizationHeader } from "../utils/getAuthorizationHeader";
@@ -28,6 +29,14 @@ class UserApi {
   async getUserById(id: string): Promise<User> {
     const { data } = await client.get<User>(
       `/users/${id}`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
+
+  async getCreatedByUserQueues(id: string): Promise<Queue[]> {
+    const { data } = await client.get<Queue[]>(
+      `/users/${id}/crated-queues`,
       getAuthorizationHeader()
     );
     return data;

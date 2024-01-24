@@ -6,7 +6,7 @@ import useMyQueuesStore from "../stores/my-queues-store";
 
 const DashboardPage = (): JSX.Element => {
   const { data } = useGetMe();
-  const { data: myQueues } = useGetMyQueues(data?.id);
+  const { data: myQueues } = useGetMyQueues(data!.id.toString());
 
   const setMyQueues = useMyQueuesStore((q) => q.setMyQueues);
   const queues = useMyQueuesStore((q) => q.myQueues);
