@@ -31,6 +31,23 @@ class QueueApi {
     return data;
   }
 
+  async updateQueueById(id: string, queue: CreateQueueBody): Promise<Queue> {
+    const { data } = await client.patch<Queue>(
+      `/queues/${id}`,
+      queue,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
+
+  async deleteQueueById(id: string): Promise<void> {
+    const { data } = await client.delete<void>(
+      `/queues/${id}`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
+
   async getMembersAmountOfQueue(id: string): Promise<number> {
     const { data } = await client.get<number>(
       `/queues/${id}/members`,

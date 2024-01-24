@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { AxiosError } from "axios";
 import { Htag, Modal, P } from "../UI";
-import APIClient from "../../services/api-client";
 import useMyQueuesStore from "../../stores/my-queues-store";
 import { useNavigate } from "react-router-dom";
+import QueueApi from "../../lib/api/queue/QueueApi";
 
 interface ErrorResponse {
   message: string;
@@ -15,8 +15,6 @@ interface Props {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const apiClient = new APIClient("/queues");
-
 export const DeleteQueueModal = ({
   isShown,
   setIsShown,
@@ -27,8 +25,7 @@ export const DeleteQueueModal = ({
   const navigate = useNavigate();
 
   const onDeleteHandler = (): void => {
-    apiClient
-      .delete(`/${queueId}`)
+    QueueApi.deleteQueueById(queueId!.toString())
       .then(() => {
         setError(null);
         setIsShown(false);
