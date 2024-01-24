@@ -78,6 +78,22 @@ class QueueApi {
     );
     return data;
   }
+
+  async addManagerToQueue(id: string, userId: string): Promise<void> {
+    const { data } = await client.post<void>(
+      `/queues/${id}/managers/${userId}`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
+
+  async removeManagerFromQueue(id: string, userId: string): Promise<void> {
+    const { data } = await client.delete<void>(
+      `/queues/${id}/managers/${userId}`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
 }
 
 export default new QueueApi();

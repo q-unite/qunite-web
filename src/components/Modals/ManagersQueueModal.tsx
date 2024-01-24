@@ -1,8 +1,8 @@
 import { useState } from "react";
-import APIClient from "../../services/api-client";
 import { Modal, P } from "../UI";
 import { Form } from "./components/Form";
 import { AxiosError } from "axios";
+import QueueApi from "../../lib/api/queue/QueueApi";
 
 interface ErrorResponse {
   message: string;
@@ -13,8 +13,6 @@ interface Props {
   isShown: boolean;
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-const apiClient = new APIClient("/queues");
 
 export const ManagersQueueModal = ({
   queueId,
@@ -28,8 +26,7 @@ export const ManagersQueueModal = ({
 
   const onSubmitHandler = (): void => {
     if (managerId.length > 0) {
-      apiClient
-        .post({ additional: `/${queueId}/managers/${managerId}` })
+      QueueApi.addManagerToQueue(queueId!.toString(), managerId)
         .then(() => setIsShown(false))
         .catch((err) => {
           setError(err);
