@@ -1,9 +1,9 @@
 import { Button, Htag } from "../../../UI";
-import { nextUserHandler } from "../../handlers";
 import { CurrentUser } from "./CurrentUser";
 import styles from "./QueueController.module.css";
 import { useContext } from "react";
 import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
+import QueueApi from "../../../../lib/api/queue/QueueApi";
 
 export const QueueController = (): JSX.Element => {
   const data = useContext(QueueDetailsContext);
@@ -27,7 +27,12 @@ export const QueueController = (): JSX.Element => {
         <footer className={styles.footer}>
           <Button
             appearance="success"
-            onClick={() => nextUserHandler(data.id, data.members[0].memberId)}
+            onClick={() =>
+              QueueApi.deleteMemberFromQueue(
+                data.id.toString(),
+                data.members[0].memberId.toString()
+              )
+            }
           >
             Next user
           </Button>
