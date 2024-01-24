@@ -7,7 +7,7 @@ import UserApi from "../../../lib/api/users/UserApi";
 import { UpdateUserBody } from "../../../lib/api/users/types/UpdateUserBody";
 import getErrorMessage from "../../../lib/utils/getErrorMessage";
 import { DeleteUserModal } from "../../Modals";
-import { Button, P } from "../../UI";
+import { Button, P } from "../../common/ui";
 import InputBox from "../InputBox";
 import styles from "./SettingsForm.module.css";
 import { FormData, schema } from "./schema";

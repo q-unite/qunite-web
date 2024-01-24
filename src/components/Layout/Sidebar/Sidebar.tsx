@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, HTMLAttributes, useState } from "react";
-import { Button } from "../../UI";
+import { Button } from "../../common/ui";
 import { Ul } from "./Ul/Ul";
 import styles from "./Sidebar.module.css";
 import navStyles from "./NavbarItem/NavbarItem.module.css";

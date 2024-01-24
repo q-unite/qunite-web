@@ -1,4 +1,4 @@
-import { Button, Htag } from "../../../UI";
+import { Button, Htag } from "../../../common/ui";
 import { CurrentUser } from "./CurrentUser";
 import styles from "./QueueController.module.css";
 import { useContext } from "react";

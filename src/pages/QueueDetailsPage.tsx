@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Header, Main } from "../components/QueueDetails";
-import { Flex, Htag } from "../components/UI";
+import { Flex, Htag } from "../components/common/ui";
 import {
   useGetCreator,
   useGetMe,

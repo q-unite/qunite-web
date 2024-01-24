@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
-import { Button } from "../../../../UI";
+import { Button } from "../../../../common/ui";
 import styles from "./AddminButtons.module.css";
 import { DeleteQueueModal, ManagersQueueModal } from "../../../../Modals";
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Modal, P } from "../UI";
+import { Modal, P } from "../common/ui";
 import { Form } from "./components/Form";
 import { AxiosError } from "axios";
 import QueueApi from "../../lib/api/queue/QueueApi";

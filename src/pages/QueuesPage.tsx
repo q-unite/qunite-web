@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Queue } from "../components/Queue/Queue";
-import { Grid } from "../components/UI";
+import { Grid } from "../components/common/ui";
 import { useGetQueues } from "../hooks";
 import { useEffect } from "react";
 import useQueuesStore from "../stores/queues-store";

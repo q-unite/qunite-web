@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
-import { Modal, P } from "../UI";
+import { Modal, P } from "../common/ui";
 import useQueuesStore from "../../stores/queues-store";
 import useMyQueuesStore from "../../stores/my-queues-store";
 import { Form } from "./components/Form";

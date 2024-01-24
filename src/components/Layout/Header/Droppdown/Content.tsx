@@ -1,7 +1,7 @@
 import cn from "classnames";
 
 import styles from "./Droppdown.module.css";
-import { Li } from "../../../UI";
+import { Li } from "../../../common/ui";
 import { handleLogout } from "../handleLogout";
 import { handleModalOpen } from "../../../../handlers/handleModalOpen";
 

@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { Flex, Icon, P } from "../UI";
+import { Flex, Icon, P } from "../common/ui";
 import styles from "./DahsboardSubheader.module.css";
 
 interface Props {

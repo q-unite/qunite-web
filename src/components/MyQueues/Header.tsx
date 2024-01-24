@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { handleModalOpen } from "../../handlers/handleModalOpen";
 import { CreateQueueModal } from "../Modals/CreateQueueModal";
-import { Button, Htag } from "../UI";
+import { Button, Htag } from "../common/ui";
 import styles from "./MyQueues.module.css";
 import { useWindowWidth } from "../../hooks";
 

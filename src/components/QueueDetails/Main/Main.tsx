@@ -1,5 +1,5 @@
 import styles from "./Main.module.css";
-import { Grid } from "../../UI";
+import { Grid } from "../../common/ui";
 import { MembersList, QueueController, Status } from "../components";
 import { useContext } from "react";
 import { QueueDetailsContext } from "../../../context/QueueDetailsContext";

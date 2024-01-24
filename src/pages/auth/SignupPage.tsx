@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { withAuthLayout } from "../../components/AuthLayout/AuthLayout";
 import SignupForm from "../../components/Forms/SignupForm/SignupForm";
-import { P } from "../../components/UI";
+import { P } from "../../components/common/ui";
 
 const SignupPage = (): JSX.Element => {
   return (

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import MyQueues from "../components/MyQueues/MyQueues";
-import { Flex, Htag } from "../components/UI";
+import { Flex, Htag } from "../components/common/ui";
 import { useGetMe, useGetMyQueues } from "../hooks";
 import useMyQueuesStore from "../stores/my-queues-store";
 

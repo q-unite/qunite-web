@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { useGetMe, useGetUser } from "../../../../hooks";
-import { Flex, Htag } from "../../../UI";
+import { Flex, Htag } from "../../../common/ui";
 import styles from "./Member.module.css";
 
 interface Props {

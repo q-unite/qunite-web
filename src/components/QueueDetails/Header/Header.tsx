@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styles from "./Header.module.css";
-import { Flex, Htag } from "../../UI";
+import { Flex, Htag } from "../../common/ui";
 import { HeaderProps } from "./Header.props";
 import { AddminButtons, UserButtons } from "../components";
 import { QueueDetailsContext } from "../../../context/QueueDetailsContext";

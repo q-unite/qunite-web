@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Queue } from "../Queue/Queue";
-import { Flex, Grid, Htag } from "../UI";
+import { Flex, Grid, Htag } from "../common/ui";
 import { Header } from "./Header";
 import styles from "./MyQueues.module.css";
 import MyQueueProps from "./MyQueue.props";

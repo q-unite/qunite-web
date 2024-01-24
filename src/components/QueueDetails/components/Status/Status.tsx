@@ -1,7 +1,7 @@
 import cn from "classnames";
 import { StatusProps } from "./Status.props";
 import styles from "./Status.module.css";
-import { Htag } from "../../../UI";
+import { Htag } from "../../../common/ui";
 import { useGetMemberPositionInQueue } from "../../../../hooks";
 import { useContext } from "react";
 import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";

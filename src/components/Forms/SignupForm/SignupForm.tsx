@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Navigate, useNavigate } from "react-router-dom";
 
-import { Button, P } from "../../UI";
+import { Button, P } from "../../common/ui";
 import styles from "./SignupForm.module.css";
 import { schema, FormData } from "./schema";
 import InputBox from "../InputBox";

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Li } from "../../../UI";
+import { Li } from "../../../common/ui";
 import { NavbarItemProps } from "./NavbarItem.props";
 
 export const NavbarItem = ({

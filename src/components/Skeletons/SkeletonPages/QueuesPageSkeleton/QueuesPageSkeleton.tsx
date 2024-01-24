@@ -1,4 +1,4 @@
-import { Grid } from "../../../UI";
+import { Grid } from "../../../common/ui";
 import { Card, Text } from "../../UI";
 
 const QueuesPageSkeleton = (): JSX.Element => {

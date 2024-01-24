@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Flex, Htag } from "../../../UI";
+import { Flex, Htag } from "../../../common/ui";
 import { Member } from "../Member/Member";
 import styles from "./MemberList.module.css";
 import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";

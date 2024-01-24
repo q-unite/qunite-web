@@ -1,6 +1,6 @@
 import cn from "classnames";
 
-import { Htag, P } from "../../UI";
+import { Htag, P } from "../../common/ui";
 import styles from "./Sidebar.module.css";
 import { SidebarProps } from "./Sidebar.props";
 

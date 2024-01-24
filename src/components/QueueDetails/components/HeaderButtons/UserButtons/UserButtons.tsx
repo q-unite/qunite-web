@@ -1,5 +1,5 @@
 import QueueApi from "../../../../../lib/api/queue/QueueApi";
-import { Button } from "../../../../UI";
+import { Button } from "../../../../common/ui";
 
 interface Props {
   id: number;

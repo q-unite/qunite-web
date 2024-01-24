@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { QueueProps } from "./QueueProps.props";
-import { Htag, P } from "../UI";
+import { Htag, P } from "../common/ui";
 import styles from "./Queue.module.css";
 import { useGetMembersAmountOfQueue } from "../../hooks";
 

@@ -4,7 +4,7 @@ import { IoClose } from "react-icons/io5";
 import styles from "./Modal.module.css";
 import { ModalProps } from "./Modal.props";
 import { Button, Htag } from "..";
-import { useClickOutOfBlock } from "../../../hooks";
+import { useClickOutOfBlock } from "../../../../hooks";
 
 export const Modal = ({
   isShown,

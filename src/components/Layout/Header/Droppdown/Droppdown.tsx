@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
 
-import { P } from "../../../UI";
+import { P } from "../../../common/ui";
 import styles from "./Droppdown.module.css";
 import { Content } from "./Content";
 import { useGetMe, useClickOutOfBlock } from "../../../../hooks";

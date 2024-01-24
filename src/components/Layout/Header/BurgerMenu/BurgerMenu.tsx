@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../../../UI";
+import { Button } from "../../../common/ui";
 import styles from "./BurgerMenu.module.css";
 import Nav from "./Nav/Nav";
 import { CreateQueueModal } from "../../../Modals/CreateQueueModal";

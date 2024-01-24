@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
-import { IconProps } from "../Icon/Icon.props";
+import { IconProps } from "../icon/Icon.props";
 
 export interface ButtonProps
   extends DetailedHTMLProps<

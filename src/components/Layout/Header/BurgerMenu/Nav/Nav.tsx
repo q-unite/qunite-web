@@ -1,5 +1,5 @@
 import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
-import { Button } from "../../../../UI";
+import { Button } from "../../../../common/ui";
 import { Ul } from "../../../Sidebar/Ul/Ul";
 import { handleLogout } from "../../handleLogout";
 import styles from "./Nav.module.css";

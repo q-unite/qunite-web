@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { Button, P } from "../../UI";
+import { Button, P } from "../../common/ui";
 import styles from "./LoginForm.module.css";
 import { schema, FormData } from "./schema";
 import { Navigate, useNavigate } from "react-router-dom";

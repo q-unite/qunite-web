@@ -1,5 +1,5 @@
 import styles from "./QueueDetailsPageSkeleton.module.css";
-import { Flex, Grid } from "../../../UI";
+import { Flex, Grid } from "../../../common/ui";
 import { Card, Text } from "../../UI";
 
 const QueueDetailsPageSkeleton = (): JSX.Element => {
