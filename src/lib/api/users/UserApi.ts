@@ -10,6 +10,14 @@ class UserApi {
     );
     return data;
   }
+
+  async getUserById(id: string): Promise<User> {
+    const { data } = await client.get<User>(
+      `/users/${id}`,
+      getAuthorizationHeader()
+    );
+    return data;
+  }
 }
 
 export default new UserApi();
