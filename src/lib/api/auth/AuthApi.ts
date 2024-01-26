@@ -1,5 +1,6 @@
-import { Token } from "../../../types/token";
+import { Tokens } from "../../../types/tokens";
 import client from "../instance";
+import { RefreshBody } from "./types/RefreshBody";
 import { SignInBody } from "./types/SignInBody";
 import { SignUpBody } from "./types/SignUpBody";
 
@@ -9,8 +10,13 @@ class AuthApi {
     return data;
   }
 
-  async signIn(body: SignInBody): Promise<Token> {
-    const { data } = await client.post<Token>("/auth/sign-in", body);
+  async signIn(body: SignInBody): Promise<Tokens> {
+    const { data } = await client.post<Tokens>("/auth/sign-in", body);
+    return data;
+  }
+
+  async refresh(body: RefreshBody): Promise<Tokens> {
+    const { data } = await client.post<Tokens>("/auth/sign-in/refresh", body);
     return data;
   }
 }
