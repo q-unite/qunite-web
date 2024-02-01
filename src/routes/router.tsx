@@ -4,9 +4,9 @@ import Layout from "../components/Layout/Layout";
 import QueuesPage from "../components/pages/QueuesPage";
 import DashboardPage from "../components/pages/DashboardPage";
 import SettingsPage from "../components/pages/SettingsPage";
-import SignupPage from "../components/pages/SignupPage";
-import LoginPage from "../components/pages/LoginPage";
 import QueueDetailsPage from "../components/pages/QueueDetailsPage";
+import Login from "../pages/login";
+import SignUp from "../pages/sign-up";
 
 const router = createBrowserRouter([
   {
@@ -28,12 +28,12 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/signup",
-    element: <SignupPage />,
+    path: "/sign-up",
+    element: <SignUp />,
   },
   {
     path: "/login",
-    element: <LoginPage />,
+    element: <Login />,
   },
 ]);
 

@@ -1,14 +1,15 @@
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-import { Button, P } from "../../common/ui";
-import styles from "./LoginForm.module.css";
-import { schema, FormData } from "./schema";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import InputBox from "../InputBox";
-import AuthService from "../../../lib/services/auth";
-import getErrorMessage from "../../../lib/utils/getErrorMessage";
-import useAuth from "../../../hooks/use-auth";
+
+import useAuth from "../../../../../hooks/use-auth";
+import AuthService from "../../../../../lib/services/auth";
+import getErrorMessage from "../../../../../lib/utils/getErrorMessage";
+import InputBox from "../../../../Forms/InputBox";
+import { Button, P } from "../../../../common/ui";
+import styles from "./LoginForm.module.css";
+import { LoginFormFields } from "./types";
+import { validationSchema } from "./validation";
 
 const LoginForm = (): JSX.Element => {
   const navigate = useNavigate();
@@ -19,12 +20,13 @@ const LoginForm = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<LoginFormFields>({
+    resolver: zodResolver(validationSchema),
   });
 
   const onSubmit = handleSubmit(async (data) => {
     try {
+      data.login = data.login.toLowerCase();
       await AuthService.signIn(data);
       await update().then(() => navigate(0));
     } catch (error: unknown) {
@@ -39,14 +41,14 @@ const LoginForm = (): JSX.Element => {
         id="login"
         placeholder="Type your login"
         type="text"
-        error={errors.login?.message}
         {...register("login")}
+        error={errors.login?.message}
       />
       <InputBox
         id="password"
         placeholder="Type some password"
-        {...register("password")}
         type="password"
+        {...register("password")}
         error={errors.password?.message}
       />
       <Button type="submit" appearance="success">

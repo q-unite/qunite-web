@@ -1,16 +1,17 @@
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { Button, P } from "../../common/ui";
-import styles from "./SignupForm.module.css";
-import { schema, FormData } from "./schema";
-import InputBox from "../InputBox";
-import AuthService from "../../../lib/services/auth/AuthService";
-import getErrorMessage from "../../../lib/utils/getErrorMessage";
-import useAuth from "../../../hooks/use-auth";
+import useAuth from "../../../../../hooks/use-auth";
+import AuthService from "../../../../../lib/services/auth/AuthService";
+import getErrorMessage from "../../../../../lib/utils/getErrorMessage";
+import InputBox from "../../../../Forms/InputBox";
+import { Button, P } from "../../../../common/ui";
+import styles from "./SignUpForm.module.css";
+import { SignUpFormFields } from "./types";
+import { validationSchema } from "./validation";
 
-const SignupForm = (): JSX.Element => {
+const SignUpForm = (): JSX.Element => {
   const navigate = useNavigate();
   const { update } = useAuth();
 
@@ -19,12 +20,14 @@ const SignupForm = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<SignUpFormFields>({
+    resolver: zodResolver(validationSchema),
   });
 
   const onSubmit = handleSubmit(async (data) => {
     try {
+      data.username = data.username.toLowerCase();
+      data.email = data.email.toLowerCase();
       await AuthService.signUp(data);
       await update().then(() => navigate("/login"));
     } catch (error: unknown) {
@@ -64,4 +67,4 @@ const SignupForm = (): JSX.Element => {
   );
 };
 
-export default SignupForm;
+export default SignUpForm;
