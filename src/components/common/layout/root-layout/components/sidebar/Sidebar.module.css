@@ -1,0 +1,26 @@
+.hideButtonContainer {
+  display: flex;
+  margin-inline: 50px;
+}
+
+.hideButton {
+  display: flex;
+  flex: 1;
+}
+
+.link {
+  display: flex;
+  padding-left: 50px;
+  padding-block: 10px;
+  border-left: 3px solid var(--white);
+  color: var(--gray);
+  gap: 20px;
+}
+
+.active {
+  border-left-color: var(--primary);
+}
+
+.active * {
+  color: var(--primary);
+}

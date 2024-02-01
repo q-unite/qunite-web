@@ -1,9 +1,0 @@
-.hideButtonContainer {
-  display: flex;
-  margin-inline: 50px;
-}
-
-.hideButton {
-  display: flex;
-  flex: 1;
-}
