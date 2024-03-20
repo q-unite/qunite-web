@@ -1,15 +1,10 @@
 import cn from "classnames";
 import { QueueProps } from "./QueueProps.props";
-import { Htag, P } from "../common/ui";
+import { Htag, P } from "..";
 import styles from "./Queue.module.css";
-import { useGetMembersAmountOfQueue } from "../../hooks";
+import { useGetMembersAmountOfQueue } from "../../../../hooks";
 
-export const Queue = ({
-  className,
-  name,
-  id,
-  ...props
-}: QueueProps): JSX.Element => {
+const Queue = ({ className, name, id, ...props }: QueueProps): JSX.Element => {
   const { data } = useGetMembersAmountOfQueue(id!);
 
   return (
@@ -19,3 +14,5 @@ export const Queue = ({
     </section>
   );
 };
+
+export default Queue;

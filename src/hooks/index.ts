@@ -1,5 +1,4 @@
 export * from "./useClickOutOfBlock";
-export * from "./useGetQueues";
 export * from "./useGetMyQueues";
 export * from "./useWindowWidth";
 export * from "./useGetQueue";
