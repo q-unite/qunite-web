@@ -1,17 +1,16 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
-import QueueApi from "../lib/api/queue/QueueApi";
+import APIClient from "../services/api-client";
+
+const apiClient = new APIClient("/queues");
 
 export const useGetMemberPositionInQueue = (
   queueId: number,
-  memberId: string
+  memberId: number
 ): UseQueryResult<number, AxiosError> =>
   useQuery({
     queryKey: ["position", queueId, memberId],
     queryFn: () =>
-      QueueApi.getMemberPositionInQueue(
-        queueId.toString(),
-        memberId.toString()
-      ),
+      apiClient.get(`/${queueId}/members/${memberId}`).catch(() => null),
     refetchInterval: 500,
   });

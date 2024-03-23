@@ -1,0 +1,14 @@
+.navbarItem {
+  display: flex;
+  padding-left: 50px;
+  padding-block: 10px;
+  border-left: 3px solid var(--white);
+}
+
+.active {
+  border-left-color: var(--primary);
+}
+
+.active * {
+  color: var(--primary);
+}

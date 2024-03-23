@@ -1,14 +1,14 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
+import APIClient from "../services/api-client";
 import { AxiosError } from "axios";
-import QueueApi from "../lib/api/queue/QueueApi";
-import { User } from "../types/user";
+import { User } from "../interfaces/User";
+
+const apiClient = new APIClient<User>("/queues");
 
 export const useGetCreator = (
-  queueId: string
+  queueId: number
 ): UseQueryResult<User, AxiosError> =>
   useQuery({
     queryKey: ["creator", queueId],
-    queryFn: () => QueueApi.getCreatorOfQueue(queueId),
-    refetchOnWindowFocus: false,
-    retry: false,
+    queryFn: () => apiClient.get(`/${queueId}/creator`),
   });

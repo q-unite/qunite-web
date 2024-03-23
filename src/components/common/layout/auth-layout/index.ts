@@ -1,1 +1,0 @@
-export { withAuthLayout } from "./AuthLayout";

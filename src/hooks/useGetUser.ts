@@ -1,10 +1,12 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { User } from "../types/user";
+import { User } from "../interfaces/User";
 import { AxiosError } from "axios";
-import UserApi from "../lib/api/users/UserApi";
+import APIClient from "../services/api-client";
+
+const apiClient = new APIClient<User>("/users");
 
 export const useGetUser = (userId: number): UseQueryResult<User, AxiosError> =>
   useQuery({
     queryKey: ["user", userId],
-    queryFn: () => UserApi.getUserById(userId.toString()),
+    queryFn: () => apiClient.get(`/${userId}`),
   });

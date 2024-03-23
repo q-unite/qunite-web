@@ -1,15 +1,15 @@
 import styles from "./Main.module.css";
-import { Grid } from "../../common/ui";
+import { Grid } from "../../UI";
 import { MembersList, QueueController, Status } from "../components";
 import { useContext } from "react";
 import { QueueDetailsContext } from "../../../context/QueueDetailsContext";
 
 export const Main = (): JSX.Element => {
-  const { isMyQueue, isManager } = useContext(QueueDetailsContext);
+  const data = useContext(QueueDetailsContext);
 
   return (
     <Grid className={styles.grid}>
-      {isMyQueue || isManager ? <QueueController /> : <Status />}
+      {data!.isMyQueue ? <QueueController /> : <Status />}
       <MembersList />
     </Grid>
   );

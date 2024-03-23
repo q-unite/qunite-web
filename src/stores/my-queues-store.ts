@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Queue } from "../types/queue";
+import { Queue } from "../interfaces/Queue";
 
 interface MyQueuesStore {
   myQueues: Queue[];
@@ -8,7 +8,7 @@ interface MyQueuesStore {
   // eslint-disable-next-line no-unused-vars
   addToMyQueues: (queue: Queue) => void;
   // eslint-disable-next-line no-unused-vars
-  removeFromMyQueues: (queueId: string) => void;
+  removeFromMyQueues: (queueId: number) => void;
 }
 
 const useMyQueuesStore = create<MyQueuesStore>((set) => ({

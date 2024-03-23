@@ -1,5 +1,5 @@
 import { useGetUser } from "../../../../hooks";
-import { Htag } from "../../../common/ui";
+import { Htag } from "../../../UI";
 
 export const CurrentUser = ({
   memberId,

@@ -1,14 +1,14 @@
 import { createContext } from "react";
-import { Member } from "../types/member";
+import { Member } from "../interfaces/Member";
+import { User } from "../interfaces/User";
 
 interface QueueDetailsContextProps {
+  me?: User;
   members: Member[];
-  id: string;
+  id: number;
   isMyQueue: boolean;
   isInQueue: boolean;
-  isManager: boolean;
 }
 
-export const QueueDetailsContext = createContext<QueueDetailsContextProps>(
-  {} as QueueDetailsContextProps
-);
+export const QueueDetailsContext =
+  createContext<QueueDetailsContextProps | null>(null);

@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { Flex, Htag } from "../../../common/ui";
+import { Flex, Htag } from "../../../UI";
 import { Member } from "../Member/Member";
 import styles from "./MemberList.module.css";
 import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
 
 export const MembersList = (): JSX.Element => {
-  const { members } = useContext(QueueDetailsContext);
+  const data = useContext(QueueDetailsContext);
 
-  if (members.length === 0) {
+  if (data!.members.length === 0) {
     return (
       <Htag tag="h2" color="gray">
         Queue is empty
@@ -17,9 +17,9 @@ export const MembersList = (): JSX.Element => {
 
   return (
     <Flex className={styles.memberList}>
-      {members.map((item) => (
+      {data!.members.map((item) => (
         <Member
-          memberId={item.memberId}
+          memerId={item.memberId}
           entryIndex={item.entryIndex}
           key={item.entryIndex}
         />

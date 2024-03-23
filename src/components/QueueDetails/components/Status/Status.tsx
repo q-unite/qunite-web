@@ -1,16 +1,14 @@
 import cn from "classnames";
 import { StatusProps } from "./Status.props";
 import styles from "./Status.module.css";
-import { Htag } from "../../../common/ui";
-import { useGetMemberPositionInQueue } from "../../../../hooks";
+import { Htag } from "../../../UI";
+import { useGetMemberPositionInQueue } from "../../../../hooks/useGetMemberPositionInQueue";
 import { useContext } from "react";
 import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
-import useAuth from "../../../../hooks/use-auth";
 
 export const Status = ({ className, ...props }: StatusProps): JSX.Element => {
   const context = useContext(QueueDetailsContext);
-  const { user } = useAuth();
-  const { data } = useGetMemberPositionInQueue(context.id, user.id);
+  const { data } = useGetMemberPositionInQueue(context!.id, context!.me!.id);
 
   return (
     <section
