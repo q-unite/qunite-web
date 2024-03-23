@@ -1,5 +1,5 @@
-import { Htag, Modal } from "../common/ui";
-import UserApi from "../../lib/api/users/UserApi";
+import UserApi from "../../../../lib/api/users/UserApi";
+import { Modal, Htag } from "../../ui";
 
 interface Props {
   isShown: boolean;

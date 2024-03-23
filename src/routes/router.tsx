@@ -3,13 +3,13 @@ import { createBrowserRouter } from "react-router-dom";
 import PrivateRoutes from "./PrivateRoutes";
 import Layout from "../components/common/layout/root-layout";
 
-import DashboardPage from "../components/pages/DashboardPage";
 import SettingsPage from "../components/pages/SettingsPage";
 import QueueDetailsPage from "../components/pages/QueueDetailsPage";
 
 import Login from "../pages/login";
 import SignUp from "../pages/sign-up";
 import Queues from "../pages/queues";
+import Dashboard from "../pages/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             element: <Queues />,
           },
           { path: "/queues/:id", element: <QueueDetailsPage /> },
-          { path: "/dashboard", element: <DashboardPage /> },
+          { path: "/dashboard", element: <Dashboard /> },
           { path: "/settings", element: <SettingsPage /> },
         ],
       },

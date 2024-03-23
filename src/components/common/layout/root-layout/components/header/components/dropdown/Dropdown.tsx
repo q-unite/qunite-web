@@ -3,7 +3,7 @@ import { IoChevronDownOutline } from "react-icons/io5";
 
 import { useClickOutOfBlock } from "../../../../../../../../hooks";
 import useAuth from "../../../../../../../../hooks/use-auth";
-import { CreateQueueModal } from "../../../../../../../Modals";
+import CreateQueueModal from "../../../../../../../common/shared/modals/CreateQueueModal";
 import { P } from "../../../../../../ui";
 import styles from "./Dropdown.module.css";
 import Content from "./content";

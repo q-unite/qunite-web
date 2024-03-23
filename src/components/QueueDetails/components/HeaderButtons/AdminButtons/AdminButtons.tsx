@@ -2,7 +2,8 @@ import { useState } from "react";
 import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
 import { Button } from "../../../../common/ui";
 import styles from "./AdminButtons.module.css";
-import { DeleteQueueModal, ManagersQueueModal } from "../../../../Modals";
+import { DeleteQueueModal } from "../../../../common/shared/modals/DeleteQueueModal";
+import { ManagersQueueModal } from "../../../../common/shared/modals/ManagersQueueModal";
 
 export const AdminButtons = ({ id }: { id: string }): JSX.Element => {
   const [deleteIsShown, setDeleteIsShown] = useState(false);

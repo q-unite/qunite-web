@@ -1,6 +1,6 @@
 import cn from "classnames";
-import { Flex, Icon, P } from "../common/ui";
-import styles from "./DahsboardSubheader.module.css";
+import { Flex, Icon, P } from "../../../../common/ui";
+import styles from "./Subheader.module.css";
 
 interface Props {
   amount: number;
@@ -8,11 +8,7 @@ interface Props {
   setIsVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const DahsboardSubheader = ({
-  amount,
-  isVisible,
-  setIsVisible,
-}: Props): JSX.Element => {
+const Subheader = ({ amount, isVisible, setIsVisible }: Props): JSX.Element => {
   return (
     <Flex
       direction="row"
@@ -31,3 +27,5 @@ export const DahsboardSubheader = ({
     </Flex>
   );
 };
+
+export default Subheader;

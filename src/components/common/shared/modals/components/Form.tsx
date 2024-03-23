@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Input } from "../../common/ui";
+import { Input } from "../../../../common/ui";
 
 interface Props {
   onSubmitHandler: () => void;

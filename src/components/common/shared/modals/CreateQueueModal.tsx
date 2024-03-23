@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
-import { Modal, P } from "../common/ui";
-import useQueuesStore from "../../stores/queues-store";
-import useMyQueuesStore from "../../stores/my-queues-store";
+
+import { Modal, P } from "../../ui";
 import { Form } from "./components/Form";
-import QueueApi from "../../lib/api/queue/QueueApi";
+
+import useMyQueuesStore from "../../../../stores/my-queues-store";
+import useQueuesStore from "../../../../stores/queues-store";
+
+import QueueApi from "../../../../lib/api/queue/QueueApi";
 
 interface ErrorResponse {
   name: string;
@@ -16,10 +19,7 @@ interface Props {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const CreateQueueModal = ({
-  isShown,
-  setIsShown,
-}: Props): JSX.Element => {
+const CreateQueueModal = ({ isShown, setIsShown }: Props): JSX.Element => {
   const [text, setText] = useState("");
   const [error, setError] = useState<AxiosError<ErrorResponse> | null>(null);
   const addToQueues = useQueuesStore((q) => q.addToQueues);
@@ -69,3 +69,5 @@ export const CreateQueueModal = ({
     </Modal>
   );
 };
+
+export default CreateQueueModal;
