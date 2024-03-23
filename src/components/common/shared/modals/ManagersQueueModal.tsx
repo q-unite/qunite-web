@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Modal, P } from "../common/ui";
-import { Form } from "./components/Form";
 import { AxiosError } from "axios";
-import QueueApi from "../../lib/api/queue/QueueApi";
+
+import { Modal, P } from "../../ui";
+import { Form } from "./components/Form";
+
+import QueueApi from "../../../../lib/api/queue/QueueApi";
 
 interface ErrorResponse {
   message: string;

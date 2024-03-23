@@ -1,16 +1,20 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+
+import { Button, P } from "../../common/ui";
+import { DeleteUserModal } from "../../common/shared/modals/DeleteUserModal";
+import InputBox from "../InputBox";
+
+import styles from "./SettingsForm.module.css";
+
+import useAuth from "../../../hooks/use-auth";
 import { handleModalOpen } from "../../../handlers/handleModalOpen";
 import UserApi from "../../../lib/api/users/UserApi";
-import { UpdateUserBody } from "../../../lib/api/users/types/UpdateUserBody";
 import getErrorMessage from "../../../lib/utils/getErrorMessage";
-import { DeleteUserModal } from "../../Modals";
-import { Button, P } from "../../common/ui";
-import InputBox from "../InputBox";
-import styles from "./SettingsForm.module.css";
+
+import { UpdateUserBody } from "../../../lib/api/users/types/UpdateUserBody";
 import { FormData, schema } from "./schema";
-import useAuth from "../../../hooks/use-auth";
 
 export const SettingsForm = (): JSX.Element => {
   const { user, update } = useAuth();

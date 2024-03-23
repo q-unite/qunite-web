@@ -1,9 +1,15 @@
-import { useState } from "react";
-import { handleModalOpen } from "../../handlers/handleModalOpen";
-import { CreateQueueModal } from "../Modals/CreateQueueModal";
-import { Button, Htag } from "../common/ui";
+import { lazy, Suspense, useState } from "react";
+
+import { Htag, Button } from "../../../../common/ui";
+
+import { useWindowWidth } from "../../../../../hooks";
+import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
+
 import styles from "./MyQueues.module.css";
-import { useWindowWidth } from "../../hooks";
+
+const CreateQueueModal = lazy(
+  () => import("../../../../common/shared/modals/CreateQueueModal")
+);
 
 export const Header = (): JSX.Element => {
   const [isShown, setIsShown] = useState(false);
@@ -19,7 +25,9 @@ export const Header = (): JSX.Element => {
       >
         {windowWidth > 765 ? "Create queue" : null}
       </Button>
-      <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
+      <Suspense fallback={null}>
+        <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
+      </Suspense>
     </header>
   );
 };
