@@ -1,9 +1,9 @@
 import { Flex, Htag } from "@/components/common/ui";
-import { Member } from "../Member/Member";
+import Member from "./components/member";
 import useQueue from "@/hooks/use-queue";
 import styles from "./MemberList.module.css";
 
-export const MembersList = (): JSX.Element => {
+const MembersList = (): JSX.Element => {
   const { members } = useQueue();
 
   if (members.length === 0) {
@@ -26,3 +26,5 @@ export const MembersList = (): JSX.Element => {
     </Flex>
   );
 };
+
+export default MembersList;

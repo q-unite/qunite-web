@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import useAuth from "../use-auth";
 import { UseQueueReturn } from "./types";
 import { useQueueContext } from "./use-queue-context";
@@ -15,9 +16,15 @@ const useQueue = (): UseQueueReturn => {
   } = useQueueContext();
   const { user } = useAuth();
 
-  const isManager = !!managers?.find((m) => m.id === user.id);
+  const isManager = useMemo(
+    () => !!managers?.find((m) => m.id === user.id),
+    [managers, user]
+  );
   const isMyQueue = user.id === creatorId;
-  const isInQueue = !!members?.find((m) => m.memberId.toString() === user.id);
+  const isInQueue = useMemo(
+    () => !!members?.find((m) => m.memberId === user.id),
+    [members, user]
+  );
 
   return {
     id,

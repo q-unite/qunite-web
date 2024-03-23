@@ -1,12 +1,13 @@
 import { Flex, Htag } from "@/components/common/ui";
-import { AdminButtons, UserButtons } from "../components";
+import AdminButtons from "./components/admin-buttons";
+import UserButtons from "./components/user-buttons";
 
 import useQueue from "@/hooks/use-queue";
 
 import styles from "./Header.module.css";
 
 const Header = (): JSX.Element => {
-  const { id, queue, isMyQueue, isManager, isInQueue } = useQueue();
+  const { queue, isMyQueue, isManager } = useQueue();
 
   return (
     <Flex direction="row" className={styles.header}>
@@ -14,11 +15,7 @@ const Header = (): JSX.Element => {
         {queue.name}
       </Htag>
 
-      {isMyQueue ? (
-        <AdminButtons id={id} />
-      ) : (
-        !isManager && <UserButtons id={id} isInQueue={isInQueue} />
-      )}
+      {isMyQueue ? <AdminButtons /> : !isManager && <UserButtons />}
     </Flex>
   );
 };

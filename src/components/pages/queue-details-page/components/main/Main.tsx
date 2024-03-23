@@ -1,5 +1,7 @@
 import { Grid } from "@/components/common/ui";
-import { MembersList, QueueController, Status } from "../components";
+import { QueueController } from "../components";
+import Status from "./components/status";
+import MembersList from "../member-list";
 
 import useQueue from "@/hooks/use-queue";
 

@@ -1,16 +1,26 @@
 import cn from "classnames";
+import { useQuery } from "@tanstack/react-query";
+
+import { Htag } from "@/components/common/ui";
+
+import useAuth from "@/hooks/use-auth";
+import useQueue from "@/hooks/use-queue";
+import QueueApi from "@/lib/api/queue/QueueApi";
+
 import { StatusProps } from "./Status.props";
 import styles from "./Status.module.css";
-import { Htag } from "@/components/common/ui";
-import { useGetMemberPositionInQueue } from "@/hooks";
-import { useContext } from "react";
-import { QueueDetailsContext } from "@/context/QueueDetailsContext";
-import useAuth from "@/hooks/use-auth";
 
-export const Status = ({ className, ...props }: StatusProps): JSX.Element => {
-  const context = useContext(QueueDetailsContext);
+const Status = ({ className, ...props }: StatusProps): JSX.Element => {
   const { user } = useAuth();
-  const { data } = useGetMemberPositionInQueue(context.id, user.id);
+  const { id } = useQueue();
+
+  const { data } = useQuery({
+    queryKey: ["position", id, user.id],
+    queryFn: () => QueueApi.getMemberPositionInQueue(id, user.username),
+    refetchInterval: 500,
+    refetchOnWindowFocus: false,
+    retry: false,
+  });
 
   return (
     <section
@@ -34,3 +44,5 @@ export const Status = ({ className, ...props }: StatusProps): JSX.Element => {
     </section>
   );
 };
+
+export default Status;

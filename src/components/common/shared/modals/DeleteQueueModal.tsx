@@ -15,7 +15,7 @@ interface Props {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const DeleteQueueModal = ({
+const DeleteQueueModal = ({
   isShown,
   setIsShown,
   queueId,
@@ -61,3 +61,5 @@ export const DeleteQueueModal = ({
     </Modal>
   );
 };
+
+export default DeleteQueueModal;
