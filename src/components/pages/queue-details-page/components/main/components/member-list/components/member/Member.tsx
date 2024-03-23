@@ -29,7 +29,7 @@ const Member = ({ memberId, entryIndex }: Props): JSX.Element => {
     <Flex
       direction="row"
       className={cn(styles.member, {
-        [styles.current]: memberId.toString() === user?.id,
+        [styles.current]: memberId === user?.id,
       })}
     >
       <Flex direction="row" className={styles.row}>

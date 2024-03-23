@@ -6,7 +6,7 @@ import useQueue from "@/hooks/use-queue";
 
 import styles from "./QueueController.module.css";
 
-export const QueueController = (): JSX.Element => {
+const QueueController = (): JSX.Element => {
   const { id, members } = useQueue();
 
   return (
@@ -39,3 +39,5 @@ export const QueueController = (): JSX.Element => {
     </section>
   );
 };
+
+export default QueueController;
