@@ -36,7 +36,7 @@ class UserApi {
 
   async getCreatedByUserQueues(id: string): Promise<Queue[]> {
     const { data } = await client.get<Queue[]>(
-      `/users/${id}/crated-queues`,
+      `/users/${id}/created-queues`,
       getAuthorizationHeader()
     );
     return data;

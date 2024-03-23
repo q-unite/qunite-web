@@ -1,17 +1,40 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Queue from "../../../../common/ui/queue";
-import { Flex, Grid, Htag } from "../../../../common/ui";
-import { Header } from "./components/header/Header";
-import styles from "./MyQueues.module.css";
-import MyQueueProps from "./MyQueue.props";
-import Subheader from "../subheader/Subheader";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-const MyQueues = ({ myQueues }: MyQueueProps): JSX.Element => {
-  const navigate = useNavigate();
+import { Flex, Htag } from "../../../../common/ui";
+import Header from "./components/header";
+import Subheader from "../subheader";
+import MyQueuesSkeleton from "./components/skeleton";
+import QueuesList from "./components/queues-list";
+
+import useAuth from "../../../../../hooks/use-auth";
+import UserApi from "../../../../../lib/api/users/UserApi";
+import useMyQueuesStore from "../../../../../stores/my-queues-store";
+import { Queue } from "../../../../../types/queue";
+
+import styles from "./MyQueues.module.css";
+
+const MyQueues = (): JSX.Element => {
+  const { user } = useAuth();
+
+  const setMyQueues = useMyQueuesStore((q) => q.setMyQueues);
+  const queues = useMyQueuesStore((q) => q.myQueues);
+
+  const { data, isLoading, refetch, isFetching } = useQuery<Queue[]>({
+    queryKey: ["my-queues", user.id],
+    queryFn: () => UserApi.getCreatedByUserQueues(user.id),
+    refetchOnWindowFocus: false,
+    retry: false,
+  });
+
+  useEffect(() => {
+    void refetch();
+    if (data) setMyQueues(data);
+  }, [refetch, data, setMyQueues]);
+
   const [isVisible, setIsVisible] = useState(true);
 
-  if (!myQueues) {
+  if (!queues) {
     return (
       <Htag tag="h1" color="primary">
         Some error on server
@@ -22,30 +45,15 @@ const MyQueues = ({ myQueues }: MyQueueProps): JSX.Element => {
   return (
     <Flex className={styles.myQueues}>
       <Header />
-
       <Subheader
         isVisible={isVisible}
         setIsVisible={setIsVisible}
-        amount={myQueues.length}
+        amount={queues.length}
       />
-
-      {myQueues.length > 0 ? (
-        isVisible && (
-          <Grid>
-            {myQueues.map((item) => (
-              <Queue
-                id={item.id}
-                name={item.name}
-                key={item.id}
-                onClick={() => navigate(`/queues/${item.id}`)}
-              />
-            ))}
-          </Grid>
-        )
+      {isLoading || isFetching ? (
+        <MyQueuesSkeleton />
       ) : (
-        <Htag tag="h2" color="primary">
-          You haven't created any queues yet
-        </Htag>
+        <QueuesList isVisible={isVisible} myQueues={queues} />
       )}
     </Flex>
   );

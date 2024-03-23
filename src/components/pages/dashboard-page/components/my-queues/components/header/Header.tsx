@@ -11,7 +11,7 @@ const CreateQueueModal = lazy(
   () => import("../../../../../../common/shared/modals/CreateQueueModal")
 );
 
-export const Header = (): JSX.Element => {
+const Header = (): JSX.Element => {
   const [isShown, setIsShown] = useState(false);
   const windowWidth = useWindowWidth();
 
@@ -31,3 +31,4 @@ export const Header = (): JSX.Element => {
     </header>
   );
 };
+export default Header;
