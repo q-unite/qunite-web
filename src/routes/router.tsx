@@ -4,12 +4,12 @@ import PrivateRoutes from "./PrivateRoutes";
 import Layout from "../components/common/layout/root-layout";
 
 import SettingsPage from "../components/pages/SettingsPage";
-import QueueDetailsPage from "../components/pages/QueueDetailsPage";
 
 import Login from "@/pages/login";
 import SignUp from "@/pages/sign-up";
 import Queues from "@/pages/queues";
 import Dashboard from "@/pages/dashboard";
+import QueueDetails from "@/pages/queue-details";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
             path: "/",
             element: <Queues />,
           },
-          { path: "/queues/:id", element: <QueueDetailsPage /> },
+          { path: "/queues/:id", element: <QueueDetails /> },
           { path: "/dashboard", element: <Dashboard /> },
           { path: "/settings", element: <SettingsPage /> },
         ],

@@ -16,7 +16,7 @@ interface Props {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ManagersQueueModal = ({
+const ManagersQueueModal = ({
   queueId,
   isShown,
   setIsShown,
@@ -67,3 +67,5 @@ export const ManagersQueueModal = ({
     </Modal>
   );
 };
+
+export default ManagersQueueModal;

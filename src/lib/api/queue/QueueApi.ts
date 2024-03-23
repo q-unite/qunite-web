@@ -48,14 +48,6 @@ class QueueApi {
     return data;
   }
 
-  async getMembersAmountOfQueue(id: string): Promise<number> {
-    const { data } = await client.get<number>(
-      `/queues/${id}/members`,
-      getAuthorizationHeader()
-    );
-    return data;
-  }
-
   async getMembersOfQueue(id: string): Promise<Member[]> {
     const { data } = await client.get<Member[]>(
       `/queues/${id}/members`,
@@ -65,8 +57,9 @@ class QueueApi {
   }
 
   async enrollMemberToQueue(id: string): Promise<void> {
-    const { data } = await client.post<void>(
+    const { data } = await client.put<void>(
       `/queues/${id}/members`,
+      null,
       getAuthorizationHeader()
     );
     return data;
@@ -74,7 +67,7 @@ class QueueApi {
 
   async leaveMemberFromQueue(id: string): Promise<void> {
     const { data } = await client.delete<void>(
-      `/queues/${id}/members/memberId`,
+      `/queues/${id}/members`,
       getAuthorizationHeader()
     );
     return data;
@@ -82,10 +75,10 @@ class QueueApi {
 
   async getMemberPositionInQueue(
     id: string,
-    memberId: string
+    username: string
   ): Promise<number> {
     const { data } = await client.get<number>(
-      `/queues/${id}/members/${memberId}`,
+      `/queues/${id}/members/${username}`,
       getAuthorizationHeader()
     );
     return data;
