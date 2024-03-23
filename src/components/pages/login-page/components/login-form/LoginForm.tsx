@@ -2,8 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import InputBox from "@/components/Forms/InputBox";
-import { Button, P } from "@/components/common/ui";
+import { Button, P, InputBox } from "@/components/common/ui";
 
 import useAuth from "@/hooks/use-auth";
 import AuthService from "@/lib/services/auth";
