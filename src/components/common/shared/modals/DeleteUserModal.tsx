@@ -6,10 +6,7 @@ interface Props {
   setIsShown: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const DeleteUserModal = ({
-  isShown,
-  setIsShown,
-}: Props): JSX.Element => {
+const DeleteUserModal = ({ isShown, setIsShown }: Props): JSX.Element => {
   const onDeleteHandler = (): void => {
     UserApi.deleteMe().then(() => {
       window.location.reload();
@@ -32,3 +29,5 @@ export const DeleteUserModal = ({
     </Modal>
   );
 };
+
+export default DeleteUserModal;

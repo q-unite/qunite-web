@@ -1,22 +1,24 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Button, P } from "../../common/ui";
-import { DeleteUserModal } from "../../common/shared/modals/DeleteUserModal";
-import InputBox from "../InputBox";
+import { Button, P, InputBox } from "@/components/common/ui";
 
 import styles from "./SettingsForm.module.css";
 
-import useAuth from "../../../hooks/use-auth";
-import { handleModalOpen } from "../../../handlers/handleModalOpen";
-import UserApi from "../../../lib/api/users/UserApi";
-import getErrorMessage from "../../../lib/utils/getErrorMessage";
+import useAuth from "@/hooks/use-auth";
+import { handleModalOpen } from "@/handlers/handleModalOpen";
+import UserApi from "@/lib/api/users/UserApi";
+import getErrorMessage from "@/lib/utils/getErrorMessage";
 
-import { UpdateUserBody } from "../../../lib/api/users/types/UpdateUserBody";
-import { FormData, schema } from "./schema";
+import { UpdateFormFields } from "./types";
+import { validationSchema } from "./validation";
 
-export const SettingsForm = (): JSX.Element => {
+const DeleteUserModal = lazy(
+  () => import("@/components/common/shared/modals/DeleteUserModal")
+);
+
+const SettingsForm = (): JSX.Element => {
   const { user, update } = useAuth();
   const [isShown, setIsShown] = useState(false);
 
@@ -25,14 +27,19 @@ export const SettingsForm = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<FormData>({
-    resolver: zodResolver(schema),
+  } = useForm<UpdateFormFields>({
+    resolver: zodResolver(validationSchema),
   });
 
-  const onSubmit = handleSubmit((data: UpdateUserBody) => {
-    UserApi.updateUserAccount(data)
-      .catch((error) => setError("root", { message: getErrorMessage(error) }))
-      .then(() => update());
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      data.username = data.username.toLowerCase();
+      await UserApi.updateUserAccount(data);
+      await update();
+    } catch (error: unknown) {
+      const message = getErrorMessage(error);
+      setError("root", { message });
+    }
   });
 
   return (
@@ -64,7 +71,11 @@ export const SettingsForm = (): JSX.Element => {
         Delete
       </Button>
 
-      <DeleteUserModal isShown={isShown} setIsShown={setIsShown} />
+      <Suspense fallback={null}>
+        <DeleteUserModal isShown={isShown} setIsShown={setIsShown} />
+      </Suspense>
     </div>
   );
 };
+
+export default SettingsForm;
