@@ -2,14 +2,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import useAuth from "../../../../../hooks/use-auth";
-import AuthService from "../../../../../lib/services/auth";
-import getErrorMessage from "../../../../../lib/utils/getErrorMessage";
-import InputBox from "../../../../Forms/InputBox";
-import { Button, P } from "../../../../common/ui";
-import styles from "./LoginForm.module.css";
+import InputBox from "@/components/Forms/InputBox";
+import { Button, P } from "@/components/common/ui";
+
+import useAuth from "@/hooks/use-auth";
+import AuthService from "@/lib/services/auth";
+import getErrorMessage from "@/lib/utils/getErrorMessage";
+
 import { LoginFormFields } from "./types";
 import { validationSchema } from "./validation";
+
+import styles from "./LoginForm.module.css";
 
 const LoginForm = (): JSX.Element => {
   const navigate = useNavigate();

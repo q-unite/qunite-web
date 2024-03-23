@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import Queue from "../../common/ui/queue";
-import { Grid } from "../../common/ui";
-import { Queue as QueueType } from "../../../types/queue";
+
+import Queue from "@/components/common/ui/queue";
+import { Grid } from "@/components/common/ui";
+
+import { Queue as QueueType } from "@/types/queue";
 
 interface QueuesPageProps {
   queues: QueueType[];

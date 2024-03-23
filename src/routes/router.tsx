@@ -6,10 +6,10 @@ import Layout from "../components/common/layout/root-layout";
 import SettingsPage from "../components/pages/SettingsPage";
 import QueueDetailsPage from "../components/pages/QueueDetailsPage";
 
-import Login from "../pages/login";
-import SignUp from "../pages/sign-up";
-import Queues from "../pages/queues";
-import Dashboard from "../pages/dashboard";
+import Login from "@/pages/login";
+import SignUp from "@/pages/sign-up";
+import Queues from "@/pages/queues";
+import Dashboard from "@/pages/dashboard";
 
 const router = createBrowserRouter([
   {

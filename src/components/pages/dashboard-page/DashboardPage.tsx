@@ -1,4 +1,4 @@
-import { Flex } from "../../common/ui";
+import { Flex } from "@/components/common/ui";
 import MyQueues from "./components/my-queues";
 
 const DashboardPage = (): JSX.Element => {
