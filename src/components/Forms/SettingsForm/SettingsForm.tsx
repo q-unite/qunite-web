@@ -1,53 +1,70 @@
-import { useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+import { Button, P } from "../../common/ui";
+import { DeleteUserModal } from "../../common/shared/modals/DeleteUserModal";
 import InputBox from "../InputBox";
-import { schema, FormData } from "./schema";
+
 import styles from "./SettingsForm.module.css";
-import { Button, P } from "../../UI";
-import { useGetMe } from "../../../hooks";
-import { onSubmit } from "./onSubit";
+
+import useAuth from "../../../hooks/use-auth";
+import { handleModalOpen } from "../../../handlers/handleModalOpen";
+import UserApi from "../../../lib/api/users/UserApi";
+import getErrorMessage from "../../../lib/utils/getErrorMessage";
+
+import { UpdateUserBody } from "../../../lib/api/users/types/UpdateUserBody";
+import { FormData, schema } from "./schema";
 
 export const SettingsForm = (): JSX.Element => {
-  const { data, refetch } = useGetMe();
-  const [error, setError] = useState("");
+  const { user, update } = useAuth();
+  const [isShown, setIsShown] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
 
+  const onSubmit = handleSubmit((data: UpdateUserBody) => {
+    UserApi.updateUserAccount(data)
+      .catch((error) => setError("root", { message: getErrorMessage(error) }))
+      .then(() => update());
+  });
+
   return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit((data: FieldValues) => {
-        onSubmit({ data, endpoint: "/users/self", setError }).then(() =>
-          refetch()
-        );
-      })}
-    >
-      <InputBox
-        id="login"
-        placeholder="Type your login"
-        type="text"
-        error={errors.email?.message}
-        {...register("email")}
-        defaultValue={data?.email}
-      />
-      <InputBox
-        id="username"
-        placeholder="Type some username"
-        {...register("username")}
-        type="text"
-        error={errors.username?.message}
-        defaultValue={data?.username}
-      />
-      {error && <P color="primary">{error}</P>}
-      <Button type="submit" appearance="success">
-        Save
+    <div className={styles.container}>
+      <form className={styles.form} onSubmit={onSubmit}>
+        <InputBox
+          id="login"
+          placeholder="Type your login"
+          type="text"
+          error={errors.email?.message}
+          {...register("email")}
+          defaultValue={user.email}
+        />
+        <InputBox
+          id="username"
+          placeholder="Type some username"
+          {...register("username")}
+          type="text"
+          error={errors.username?.message}
+          defaultValue={user.username}
+        />
+        {errors.root && <P color="primary">{errors.root.message}</P>}
+        <Button type="submit" appearance="success">
+          Save
+        </Button>
+      </form>
+
+      <Button onClick={(e) => handleModalOpen(e, setIsShown)} appearance="red">
+        Delete
       </Button>
-    </form>
+
+      <DeleteUserModal isShown={isShown} setIsShown={setIsShown} />
+    </div>
   );
 };

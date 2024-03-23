@@ -1,12 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
+
 import PrivateRoutes from "./PrivateRoutes";
-import Layout from "../components/Layout/Layout";
-import QueuesPage from "../pages/QueuesPage";
-import DashboardPage from "../pages/DashboardPage";
-import SettingsPage from "../pages/SettingsPage";
-import SignupPage from "../pages/auth/SignupPage";
-import LoginPage from "../pages/auth/LoginPage";
-import QueueDetailsPage from "../pages/QueueDetailsPage";
+import Layout from "../components/common/layout/root-layout";
+
+import SettingsPage from "../components/pages/SettingsPage";
+import QueueDetailsPage from "../components/pages/QueueDetailsPage";
+
+import Login from "@/pages/login";
+import SignUp from "@/pages/sign-up";
+import Queues from "@/pages/queues";
+import Dashboard from "@/pages/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -18,22 +21,22 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/",
-            element: <QueuesPage />,
+            element: <Queues />,
           },
           { path: "/queues/:id", element: <QueueDetailsPage /> },
-          { path: "/dashboard", element: <DashboardPage /> },
+          { path: "/dashboard", element: <Dashboard /> },
           { path: "/settings", element: <SettingsPage /> },
         ],
       },
     ],
   },
   {
-    path: "/signup",
-    element: <SignupPage />,
+    path: "/sign-up",
+    element: <SignUp />,
   },
   {
     path: "/login",
-    element: <LoginPage />,
+    element: <Login />,
   },
 ]);
 
