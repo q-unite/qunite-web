@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const schema = z.object({
+export const validationSchema = z.object({
   username: z
     .string({ required_error: "Specify username" })
     .min(4, "Username must be at least 4 characters")
@@ -13,5 +13,3 @@ export const schema = z.object({
     .min(1, { message: "Specify email" })
     .email("Enter correct email"),
 });
-
-export type FormData = z.infer<typeof schema>;

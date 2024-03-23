@@ -1,4 +1,4 @@
-import { SettingsForm } from "../Forms/SettingsForm/SettingsForm";
+import SettingsForm from "./components/settings-form";
 
 const SettingsPage = (): JSX.Element => {
   return (
