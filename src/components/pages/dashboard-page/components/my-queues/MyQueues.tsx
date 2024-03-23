@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Queue from "../../../../common/ui/queue";
 import { Flex, Grid, Htag } from "../../../../common/ui";
-import { Header } from "./Header";
+import { Header } from "./components/header/Header";
 import styles from "./MyQueues.module.css";
 import MyQueueProps from "./MyQueue.props";
-import { DahsboardSubheader } from "../../../../DahsboardSubheader/DahsboardSubheader";
+import Subheader from "../subheader/Subheader";
 
 const MyQueues = ({ myQueues }: MyQueueProps): JSX.Element => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const MyQueues = ({ myQueues }: MyQueueProps): JSX.Element => {
     <Flex className={styles.myQueues}>
       <Header />
 
-      <DahsboardSubheader
+      <Subheader
         isVisible={isVisible}
         setIsVisible={setIsVisible}
         amount={myQueues.length}

@@ -1,14 +1,14 @@
 import { lazy, Suspense, useState } from "react";
 
-import { Htag, Button } from "../../../../common/ui";
+import { Htag, Button } from "../../../../../../common/ui";
 
-import { useWindowWidth } from "../../../../../hooks";
-import { handleModalOpen } from "../../../../../handlers/handleModalOpen";
+import { useWindowWidth } from "../../../../../../../hooks";
+import { handleModalOpen } from "../../../../../../../handlers/handleModalOpen";
 
-import styles from "./MyQueues.module.css";
+import styles from "./Header.module.css";
 
 const CreateQueueModal = lazy(
-  () => import("../../../../common/shared/modals/CreateQueueModal")
+  () => import("../../../../../../common/shared/modals/CreateQueueModal")
 );
 
 export const Header = (): JSX.Element => {
