@@ -1,6 +1,6 @@
 import styles from "./QueueDetailsPageSkeleton.module.css";
-import { Flex, Grid } from "../../../common/ui";
-import { Card, Text } from "../../../common/ui/skeletons";
+import { Flex, Grid } from "@/components/common/ui";
+import { Card, Text } from "@/components/common/ui/skeletons";
 
 const QueueDetailsPageSkeleton = (): JSX.Element => {
   const tempArr = [1, 2, 3, 4, 5];
