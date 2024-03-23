@@ -1,5 +1,5 @@
 export interface Member {
-  memberId: number;
+  memberId: string;
   queueId: number;
   createdAt: string;
   entryIndex: number;

@@ -1,8 +1,8 @@
 import cn from "classnames";
-import { useGetUser } from "../../../../hooks";
-import { Flex, Htag } from "../../../common/ui";
+import { useGetUser } from "@/hooks";
+import { Flex, Htag } from "@/components/common/ui";
 import styles from "./Member.module.css";
-import useAuth from "../../../../hooks/use-auth";
+import useAuth from "@/hooks/use-auth";
 
 interface Props {
   memberId: number;

@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { Flex, Htag } from "../../../common/ui";
+import { Flex, Htag } from "@/components/common/ui";
 import { Member } from "../Member/Member";
+import useQueue from "@/hooks/use-queue";
 import styles from "./MemberList.module.css";
-import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
 
 export const MembersList = (): JSX.Element => {
-  const { members } = useContext(QueueDetailsContext);
+  const { members } = useQueue();
 
   if (members.length === 0) {
     return (

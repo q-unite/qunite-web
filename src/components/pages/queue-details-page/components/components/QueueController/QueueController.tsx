@@ -1,12 +1,13 @@
-import { Button, Htag } from "../../../common/ui";
+import { Button, Htag } from "@/components/common/ui";
 import { CurrentUser } from "./CurrentUser";
+
+import QueueApi from "@/lib/api/queue/QueueApi";
+import useQueue from "@/hooks/use-queue";
+
 import styles from "./QueueController.module.css";
-import { useContext } from "react";
-import { QueueDetailsContext } from "../../../../context/QueueDetailsContext";
-import QueueApi from "../../../../lib/api/queue/QueueApi";
 
 export const QueueController = (): JSX.Element => {
-  const { id, members } = useContext(QueueDetailsContext);
+  const { id, members } = useQueue();
 
   return (
     <section className={styles.controller}>
