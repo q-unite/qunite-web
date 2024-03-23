@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-import { Grid, Htag } from "../../../../../../common/ui";
-import Queue from "../../../../../../common/ui/queue";
+import { Grid, Htag } from "@/components/common/ui";
+import Queue from "@/components/common/ui/queue";
 
-import { Queue as QueueType } from "../../../../../../../types/queue";
+import { Queue as QueueType } from "@/types/queue";
 
 interface QueueListProps {
   isVisible: boolean;

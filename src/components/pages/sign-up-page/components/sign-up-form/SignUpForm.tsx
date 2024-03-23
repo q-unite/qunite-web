@@ -2,14 +2,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import useAuth from "../../../../../hooks/use-auth";
-import AuthService from "../../../../../lib/services/auth/AuthService";
-import getErrorMessage from "../../../../../lib/utils/getErrorMessage";
-import InputBox from "../../../../Forms/InputBox";
-import { Button, P } from "../../../../common/ui";
-import styles from "./SignUpForm.module.css";
+import InputBox from "@/components/Forms/InputBox";
+import { Button, P } from "@/components/common/ui";
+
+import useAuth from "@/hooks/use-auth";
+import AuthService from "@/lib/services/auth/AuthService";
+import getErrorMessage from "@/lib/utils/getErrorMessage";
+
 import { SignUpFormFields } from "./types";
 import { validationSchema } from "./validation";
+
+import styles from "./SignUpForm.module.css";
 
 const SignUpForm = (): JSX.Element => {
   const navigate = useNavigate();

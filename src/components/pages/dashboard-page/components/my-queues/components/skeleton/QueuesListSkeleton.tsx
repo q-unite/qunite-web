@@ -1,5 +1,5 @@
-import { Grid } from "../../../../../../common/ui";
-import { Card, Text } from "../../../../../../common/ui/skeletons";
+import { Grid } from "@/components/common/ui";
+import { Card, Text } from "@/components/common/ui/skeletons";
 
 const QueuesListSkeleton = (): JSX.Element => {
   const arr = Array.from({ length: 9 }, (_, i) => i);

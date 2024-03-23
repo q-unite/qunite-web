@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { withAuthLayout } from "../../common/layout/auth-layout";
+
+import { withAuthLayout } from "@/components/common/layout/auth-layout";
+import { P } from "@/components/common/ui";
 import LoginForm from "./components/login-form";
-import { P } from "../../common/ui";
+
 import styles from "./LoginPage.module.css";
 
 const LoginPage = (): JSX.Element => {

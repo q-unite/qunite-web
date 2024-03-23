@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
-import { Flex, Htag } from "../../../../common/ui";
+import { Flex, Htag } from "@/components/common/ui";
 import Header from "./components/header";
 import Subheader from "../subheader";
 import MyQueuesSkeleton from "./components/skeleton";
 import QueuesList from "./components/queues-list";
 
-import useAuth from "../../../../../hooks/use-auth";
-import UserApi from "../../../../../lib/api/users/UserApi";
-import useMyQueuesStore from "../../../../../stores/my-queues-store";
-import { Queue } from "../../../../../types/queue";
+import useAuth from "@/hooks/use-auth";
+import UserApi from "@/lib/api/users/UserApi";
+import useMyQueuesStore from "@/stores/my-queues-store";
+import { Queue } from "@/types/queue";
 
 import styles from "./MyQueues.module.css";
 
