@@ -15,10 +15,12 @@ export const Modal = ({
   dangerButtonText,
   dangerButtonClick,
   setIsShown,
-}: ModalProps): JSX.Element => {
+}: ModalProps): JSX.Element | null => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useClickOutOfBlock(ref, setIsShown);
+
+  if (!isShown) return null;
 
   return (
     <section
