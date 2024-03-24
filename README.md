@@ -18,6 +18,7 @@ To get local copy up and running follow these steps.
 ### Prerequisites
 
 - qunite-api (see instructions [here](https://github.com/q-unite/qunite-api))
+- yarn `npm i -g yarn`
 
 ### Installation
 
@@ -27,7 +28,7 @@ To get local copy up and running follow these steps.
    ```
 2. Install NPM packages
    ```sh
-   npm install
+   yarn install
    ```
 
 ## Usage
@@ -35,5 +36,9 @@ To get local copy up and running follow these steps.
 To start the application locally:
 
 ```sh
-npm run dev
+yarn dev
 ```
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.

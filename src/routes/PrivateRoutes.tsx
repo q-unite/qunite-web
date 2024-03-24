@@ -1,17 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useGetMe } from "../hooks";
-import Loading from "../components/Loading/Loading";
-import authStore from "../stores/auth-store";
+import useAuth from "../hooks/use-auth";
+import AuthService from "../lib/services/auth";
 
 const PrivateRoutes = (): JSX.Element => {
-  const { data, isLoading } = useGetMe();
+  const { isLoggedIn } = useAuth();
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (!data?.username) {
-    authStore.getState().logout();
+  if (!isLoggedIn) {
+    AuthService.logout();
     return <Navigate to="/login" />;
   }
 

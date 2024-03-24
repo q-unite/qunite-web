@@ -6,6 +6,6 @@ export const useGetMembersAmountOfQueue = (
 ): UseQueryResult<number, undefined> =>
   useQuery({
     queryKey: ["members-amount", id],
-    queryFn: () => QueueApi.getMembersAmountOfQueue(id) || 0,
+    queryFn: () => QueueApi.getMembersOfQueue(id).then((res) => res.length),
     retry: false,
   });

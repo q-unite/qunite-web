@@ -10,7 +10,11 @@ class AuthService {
 
   static async signIn(body: SignInBody): Promise<void> {
     const token = await AuthApi.signIn(body);
-    StorageUtil.setAccessToken(token.token);
+    StorageUtil.setTokens(token.accessToken, token.refreshToken);
+  }
+
+  static async logout(): Promise<void> {
+    StorageUtil.removeTokens();
   }
 }
 
