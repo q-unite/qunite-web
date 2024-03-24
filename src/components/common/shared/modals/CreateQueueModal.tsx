@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 
-import { Modal, P } from "../../ui";
+import { Modal, P } from "@/components/common/ui";
 import { Form } from "./components/Form";
 
-import useMyQueuesStore from "../../../../stores/my-queues-store";
-import useQueuesStore from "../../../../stores/queues-store";
+import useMyQueuesStore from "@/stores/my-queues-store";
+import useQueuesStore from "@/stores/queues-store";
 
-import QueueApi from "../../../../lib/api/queue/QueueApi";
+import QueueApi from "@/lib/api/queue/QueueApi";
 
 interface ErrorResponse {
   name: string;
