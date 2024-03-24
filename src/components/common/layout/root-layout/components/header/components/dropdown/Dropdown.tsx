@@ -1,12 +1,17 @@
-import { useRef, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
 
-import { useClickOutOfBlock } from "../../../../../../../../hooks";
-import useAuth from "../../../../../../../../hooks/use-auth";
-import CreateQueueModal from "../../../../../../../common/shared/modals/CreateQueueModal";
-import { P } from "../../../../../../ui";
-import styles from "./Dropdown.module.css";
+import { P } from "@/components/common/ui";
 import Content from "./content";
+
+import { useClickOutOfBlock } from "@/hooks";
+import useAuth from "@/hooks/use-auth";
+
+import styles from "./Dropdown.module.css";
+
+const CreateQueueModal = lazy(
+  () => import("@/components/common/shared/modals/CreateQueueModal")
+);
 
 const Dropdown = (): JSX.Element => {
   const { user } = useAuth();
@@ -28,7 +33,9 @@ const Dropdown = (): JSX.Element => {
         <Content visible={visible} setIsShown={setIsShown} />
       </div>
 
-      <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
+      <Suspense fallback={null}>
+        <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
+      </Suspense>
     </>
   );
 };

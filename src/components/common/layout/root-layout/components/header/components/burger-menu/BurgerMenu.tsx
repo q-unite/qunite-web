@@ -1,8 +1,11 @@
-import { useState } from "react";
-import styles from "./BurgerMenu.module.css";
-import { CreateQueueModal } from "../../../../../../../Modals";
-import { Button } from "../../../../../../ui";
+import { lazy, Suspense, useState } from "react";
 import Nav from "./nav";
+import { Button } from "@/components/common/ui";
+import styles from "./BurgerMenu.module.css";
+
+const CreateQueueModal = lazy(
+  () => import("@/components/common/shared/modals/CreateQueueModal")
+);
 
 const BurgerMenu = (): JSX.Element => {
   const [isHidden, setIsHidden] = useState(true);
@@ -19,7 +22,9 @@ const BurgerMenu = (): JSX.Element => {
 
       <Nav isHidden={isHidden} setIsShown={setIsShown} />
 
-      <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
+      <Suspense fallback={null}>
+        <CreateQueueModal isShown={isShown} setIsShown={setIsShown} />
+      </Suspense>
     </div>
   );
 };
