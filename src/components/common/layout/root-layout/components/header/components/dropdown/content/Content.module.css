@@ -1,0 +1,33 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 30px;
+  right: -5px;
+  background: var(--white);
+  padding: 20px;
+  border-radius: 15px;
+  gap: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  transition: 0.2s all;
+}
+
+ul.content::before {
+  content: "";
+  border-color: transparent var(--white);
+  border-style: solid;
+  border-width: 0.5rem 0 0.5rem 0.5rem;
+  display: block;
+  position: absolute;
+  height: 0;
+  width: 0;
+  right: 0;
+  transform: translate(400%, -100%);
+  rotate: -90deg;
+}
+
+.visible {
+  visibility: hidden;
+  opacity: 0;
+}

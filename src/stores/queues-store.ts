@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Queue } from "../interfaces/Queue";
+import { Queue } from "../types/queue";
 
 interface QueuesStore {
   queues: Queue[];

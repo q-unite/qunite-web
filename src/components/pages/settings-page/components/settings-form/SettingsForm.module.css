@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
+  background: var(--white);
+  border-radius: 15px;
+  padding: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  flex: 0.7;
+  gap: 20px;
+}
+
+@media (max-width: 765px) {
+  .container {
+    padding: 32px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .form {
+    flex: 1;
+  }
+}

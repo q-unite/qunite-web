@@ -1,0 +1,27 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 76px;
+  left: 0;
+  background: var(--white);
+  width: 100vw;
+  height: calc(100vh - 76px);
+  padding: 32px;
+}
+
+.link {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  color: var(--gray);
+  gap: 20px;
+}
+
+.active,
+.active * {
+  background: var(--primary-bg);
+  color: var(--primary);
+  border-radius: 15px;
+}

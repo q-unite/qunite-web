@@ -1,0 +1,10 @@
+.burgerMenu {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (min-width: 766px) {
+  .burgerMenu {
+    display: none;
+  }
+}
